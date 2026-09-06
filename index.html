@@ -41,7 +41,6 @@ h2{font-size:clamp(30px,9vw,47px);line-height:1.15;margin:8px 0 24px;letter-spac
 .rank{display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:10px;align-items:start;padding:13px 0;border-bottom:1px solid #eee7db;min-width:0}.rank:last-child{border-bottom:0}.rank .n{font-weight:900;font-size:20px}.rank .name{font-weight:800;line-height:1.35;min-width:0;overflow-wrap:anywhere}.rank .cat{display:block;color:var(--muted);font-size:12px;margin-top:3px}.rank .money{font-weight:900;white-space:nowrap}
 .ojisan{font-size:clamp(24px,7vw,38px);line-height:1.75;font-weight:900;padding:30px}.ojisan small{display:block;color:var(--muted);font-size:14px;line-height:1;margin-bottom:18px;font-weight:800}.ojisan q{quotes:"「" "」";display:block}.ojisan q::before{content:open-quote}.ojisan q::after{content:close-quote}
 .foot{color:var(--muted);font-size:13px;line-height:1.7;text-align:center;margin-top:26px}
-.fileline{font-weight:800;overflow-wrap:anywhere}
 @media(max-width:480px){main{padding-left:12px;padding-right:12px}.card{padding:18px;border-radius:24px}.grid{gap:8px}.metric{padding:16px 12px;min-height:112px}.metric span{font-size:15px}.metric strong{font-size:clamp(23px,6.8vw,32px)}.barrow{grid-template-columns:minmax(0,1fr) minmax(64px,.9fr) auto;gap:7px;font-size:14px}.amt{font-size:13px}.track{height:18px}.ojisan{padding:24px 18px}.rank{grid-template-columns:28px minmax(0,1fr) auto;gap:7px}.rank .money{font-size:13px}.actions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}button{padding:12px 10px;font-size:15px}}
 @media(max-width:360px){.grid{grid-template-columns:1fr}.metric{min-height:auto}.metric strong{font-size:30px}.barrow{grid-template-columns:minmax(0,1fr) 72px auto}}
 </style>
@@ -54,11 +53,11 @@ h2{font-size:clamp(30px,9vw,47px);line-height:1.15;margin:8px 0 24px;letter-spac
   <section class="card" id="pickerCard">
     <label class="pick">📂 マネーフォワードCSVを選ぶ<input id="fileInput" type="file" accept=".csv,text/csv,text/plain"></label>
     <div id="status" class="status">CSVはこのiPhoneのブラウザ内だけで解析。外部送信なし。</div>
+    <div class="note" style="margin-top:14px;font-size:13px">読み込む列：日付・金額・大項目・中項目・計算対象。<br>「内容」「メモ」「保有金融機関」「ID」は分析にも表示にも使いません。ファイル名も表示しません。<br>※ 中項目に自分で氏名などを付けている場合は、画面に表示されることがあります。</div>
   </section>
 
   <div id="dashboard" class="hidden">
     <section class="card">
-      <div class="note fileline" id="filename"></div>
       <div class="note" id="period" style="margin:4px 0 18px"></div>
       <div class="grid">
         <div class="metric"><span>収入</span><strong id="income" class="good">0円</strong></div>
@@ -85,7 +84,7 @@ h2{font-size:clamp(30px,9vw,47px);line-height:1.15;margin:8px 0 24px;letter-spac
 
     <section class="card">
       <div class="note">別のCSVに替えるときは、下のボタンでもう一度選べます。</div>
-      <div class="actions"><button class="primary" id="again">別のCSVを読む</button><button id="clear">表示を消す</button></div>
+      <div class="actions"><button class="primary" id="again">別のCSVを読む</button><button id="clear">データを消す</button></div>
     </section>
   </div>
 
@@ -146,14 +145,14 @@ function commentFor({cats,expense,spends}){
   return `支出は ${yen(expense)}。致命傷なし。ただし「じゃあ使っていいな」に変換するのは禁止。余計簿は見てる。`;
 }
 
-function analyze(file, text){
+function analyze(text){
   const all=parseCSV(text); if(all.length<2) throw new Error('CSVの行が見つかりません。');
   const headers=all.shift().map(x=>String(x).replace(/^\uFEFF/,'').trim());
   const I={
-    target:findCol(headers,'計算対象'), date:findCol(headers,'日付'), content:findCol(headers,'内容'),
-    amount:findCol(headers,'金額（円）','金額'), cat:findCol(headers,'大項目')
+    target:findCol(headers,'計算対象'), date:findCol(headers,'日付'),
+    amount:findCol(headers,'金額（円）','金額'), cat:findCol(headers,'大項目'), subcat:findCol(headers,'中項目')
   };
-  if(Object.values(I).some(i=>i<0)) throw new Error('マネーフォワードCSVの必要な列を見つけられませんでした。');
+  if([I.target,I.date,I.amount,I.cat].some(i=>i<0)) throw new Error('マネーフォワードCSVの必要な列を見つけられませんでした。');
   const rows=all.filter(r=>String(r[I.target]??'').trim()==='1');
   if(!rows.length) throw new Error('「計算対象=1」の明細がありません。');
   let income=0,expense=0; const cats={}; const spends=[]; const dates=[];
@@ -161,14 +160,14 @@ function analyze(file, text){
     const n=num(r[I.amount]); const d=r[I.date]; if(d)dates.push(d);
     if(n>0) income+=n;
     else if(n<0){
-      const a=-n, cat=(r[I.cat]||'未分類').trim()||'未分類', name=(r[I.content]||'（内容なし）').trim()||'（内容なし）';
-      expense+=a; cats[cat]=(cats[cat]||0)+a; spends.push({name,cat,amount:a,date:d});
+      const a=-n, cat=(r[I.cat]||'未分類').trim()||'未分類';
+      const subcat=I.subcat>=0?((r[I.subcat]||'未分類').trim()||'未分類'):'未分類';
+      expense+=a; cats[cat]=(cats[cat]||0)+a; spends.push({name:subcat,cat,amount:a,date:d});
     }
   }
   spends.sort((a,b)=>b.amount-a.amount);
   dates.sort((a,b)=>toDateValue(a)-toDateValue(b));
   const balance=income-expense;
-  $('filename').textContent=file.name;
   $('period').textContent=`${dates[0]||''} 〜 ${dates[dates.length-1]||''}`;
   $('income').textContent=yen(income); $('expense').textContent=yen(expense);
   $('balance').textContent=yen(balance); $('balance').className=balance>=0?'good':'bad'; $('count').textContent=`${rows.length}件`;
@@ -184,13 +183,21 @@ function analyze(file, text){
 async function loadFile(file){
   if(!file)return;
   $('status').textContent='読み込み中…';
-  try{const text=decodeCSV(await file.arrayBuffer()); analyze(file,text);}
+  try{const text=decodeCSV(await file.arrayBuffer()); analyze(text);}
   catch(e){$('dashboard').classList.add('hidden'); $('status').textContent='⚠️ '+(e?.message||'読み込みに失敗しました。');}
   finally{$('fileInput').value='';}
 }
 $('fileInput').addEventListener('change',e=>loadFile(e.target.files?.[0]));
 $('again').addEventListener('click',()=>$('fileInput').click());
-$('clear').addEventListener('click',()=>{ $('dashboard').classList.add('hidden'); $('status').textContent='表示を消しました。CSVの中身は保存していません。'; window.scrollTo({top:0,behavior:'smooth'}); });
+function clearData(){
+  $('fileInput').value='';
+  $('income').textContent='0円'; $('expense').textContent='0円'; $('balance').textContent='0円'; $('balance').className=''; $('count').textContent='0件';
+  $('period').textContent=''; $('bars').replaceChildren(); $('ranking').replaceChildren(); $('comment').textContent='';
+  $('dashboard').classList.add('hidden');
+  $('status').textContent='データを消しました。アプリから読み込んだ結果を参照できない状態にしました。元のCSVは変更していません。';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+$('clear').addEventListener('click',clearData);
 </script>
 </body>
 </html>
