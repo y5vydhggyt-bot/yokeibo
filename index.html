@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="余計簿">
+<meta name="theme-color" content="#f4efe4">
+<title>余計簿</title>
+<style>
+:root{--bg:#f4efe4;--card:#fffdf8;--ink:#1f201d;--muted:#79766e;--line:#ded5c5;--bar:#222320;--track:#ebe4d8;--good:#2f7155;--bad:#a84536}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",Meiryo,sans-serif}
+main{max-width:720px;margin:0 auto;padding:32px 18px calc(48px + env(safe-area-inset-bottom))}
+h1{font-size:clamp(44px,14vw,78px);line-height:1;margin:28px 0 14px;letter-spacing:-.04em}
+.sub{font-size:clamp(18px,5vw,28px);line-height:1.55;font-weight:700;color:var(--muted);margin:0 0 30px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:24px;margin:18px 0;box-shadow:0 2px 10px #00000008}
+.pick{display:flex;align-items:center;justify-content:center;text-align:center;min-height:112px;padding:20px;border:3px dashed #c9bea9;border-radius:24px;font-weight:800;font-size:clamp(20px,6vw,29px);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.pick:active{transform:scale(.99)}
+.pick input{display:none}
+.note,.status{color:var(--muted);font-weight:650;line-height:1.6}
+.status{text-align:center;margin-top:14px;font-size:14px}
+.actions{display:flex;gap:10px;margin-top:12px}
+button{border:0;border-radius:16px;padding:12px 16px;font:inherit;font-weight:800;background:#e9e2d6;color:var(--ink)}
+button.primary{background:var(--ink);color:#fff}
+.hidden{display:none!important}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.metric{background:#fbf8f1;border-radius:24px;padding:22px 18px;min-height:130px}
+.metric span{display:block;color:var(--muted);font-weight:800;font-size:17px;margin-bottom:8px}
+.metric strong{display:block;font-size:clamp(28px,8vw,42px);line-height:1.12;word-break:keep-all}
+.good{color:var(--good)}.bad{color:var(--bad)}
+h2{font-size:clamp(30px,9vw,47px);line-height:1.15;margin:8px 0 24px;letter-spacing:-.03em}
+.barrow{display:grid;grid-template-columns:minmax(98px,1.15fr) minmax(110px,1.5fr) minmax(90px,.9fr);gap:12px;align-items:center;margin:17px 0;font-weight:800}
+.track{height:22px;background:var(--track);border-radius:999px;overflow:hidden}.bar{height:100%;background:var(--bar);border-radius:999px}.amt{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.rank{display:grid;grid-template-columns:36px 1fr auto;gap:10px;align-items:start;padding:13px 0;border-bottom:1px solid #eee7db}.rank:last-child{border-bottom:0}.rank .n{font-weight:900;font-size:20px}.rank .name{font-weight:800;line-height:1.35}.rank .cat{display:block;color:var(--muted);font-size:12px;margin-top:3px}.rank .money{font-weight:900;white-space:nowrap}
+.ojisan{font-size:clamp(24px,7vw,38px);line-height:1.75;font-weight:900;padding:30px}.ojisan small{display:block;color:var(--muted);font-size:14px;line-height:1;margin-bottom:18px;font-weight:800}.ojisan q{quotes:"「" "」";display:block}.ojisan q::before{content:open-quote}.ojisan q::after{content:close-quote}
+.foot{color:var(--muted);font-size:13px;line-height:1.7;text-align:center;margin-top:26px}
+.fileline{font-weight:800;overflow-wrap:anywhere}
+@media(max-width:480px){main{padding-left:16px;padding-right:16px}.card{padding:20px;border-radius:26px}.grid{gap:10px}.metric{padding:18px 14px;min-height:118px}.barrow{grid-template-columns:105px 1fr 92px;gap:9px;font-size:15px}.track{height:19px}.ojisan{padding:26px 22px}.rank{grid-template-columns:30px 1fr auto}.money{font-size:14px}}
+</style>
+</head>
+<body>
+<main>
+  <h1>余計簿</h1>
+  <p class="sub">家計を眺めて、オジサンが頼まれてないことまで言う。</p>
+
+  <section class="card" id="pickerCard">
+    <label class="pick">📂 マネーフォワードCSVを選ぶ<input id="fileInput" type="file" accept=".csv,text/csv,text/plain"></label>
+    <div id="status" class="status">CSVはこのiPhoneのブラウザ内だけで解析。外部送信なし。</div>
+  </section>
+
+  <div id="dashboard" class="hidden">
+    <section class="card">
+      <div class="note fileline" id="filename"></div>
+      <div class="note" id="period" style="margin:4px 0 18px"></div>
+      <div class="grid">
+        <div class="metric"><span>収入</span><strong id="income" class="good">0円</strong></div>
+        <div class="metric"><span>支出</span><strong id="expense" class="bad">0円</strong></div>
+        <div class="metric"><span>差引</span><strong id="balance">0円</strong></div>
+        <div class="metric"><span>集計件数</span><strong id="count">0件</strong></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>支出の内訳</h2>
+      <div id="bars"></div>
+    </section>
+
+    <section class="card">
+      <h2>大きかった支出</h2>
+      <div id="ranking"></div>
+    </section>
+
+    <section class="card ojisan">
+      <small>オジサンの余計な一言</small>
+      <q id="comment"></q>
+    </section>
+
+    <section class="card">
+      <div class="note">別のCSVに替えるときは、下のボタンでもう一度選べます。</div>
+      <div class="actions"><button class="primary" id="again">別のCSVを読む</button><button id="clear">表示を消す</button></div>
+    </section>
+  </div>
+
+  <p class="foot">OpenAI APIなし・有料APIなし・従量課金なし。<br>「計算対象」= 1 の行だけを集計します。CSVの中身は保存・送信しません。</p>
+</main>
+<script>
+'use strict';
+const $=id=>document.getElementById(id);
+const yen=n=>new Intl.NumberFormat('ja-JP',{style:'currency',currency:'JPY',maximumFractionDigits:0}).format(n);
+const num=v=>{const n=Number(String(v??'').replace(/[￥¥,\s]/g,''));return Number.isFinite(n)?n:0};
+
+function parseCSV(text){
+  const rows=[]; let row=[], cell='', quoted=false;
+  for(let i=0;i<text.length;i++){
+    const c=text[i];
+    if(c==='"'){
+      if(quoted && text[i+1]==='"'){cell+='"';i++;} else quoted=!quoted;
+    } else if(c===',' && !quoted){row.push(cell);cell='';}
+    else if((c==='\n'||c==='\r') && !quoted){
+      if(c==='\r'&&text[i+1]==='\n')i++;
+      row.push(cell); if(row.some(x=>x!=='')) rows.push(row); row=[]; cell='';
+    } else cell+=c;
+  }
+  if(cell!==''||row.length){row.push(cell); if(row.some(x=>x!=='')) rows.push(row);}
+  return rows;
+}
+
+function looksJapanese(s){return /計算対象|日付|金額|大項目/.test(s)}
+function decodeCSV(buffer){
+  const u8=new Uint8Array(buffer);
+  if(u8.length>=3 && u8[0]===0xEF && u8[1]===0xBB && u8[2]===0xBF) return new TextDecoder('utf-8').decode(u8);
+  try{const utf=new TextDecoder('utf-8',{fatal:true}).decode(u8); if(looksJapanese(utf.slice(0,500))) return utf;}catch(_e){}
+  try{return new TextDecoder('shift_jis').decode(u8);}catch(_e){return new TextDecoder('utf-8').decode(u8);}
+}
+function findCol(headers,...names){
+  const hs=headers.map(x=>String(x).replace(/^\uFEFF/,'').trim());
+  for(const n of names){const i=hs.indexOf(n); if(i>=0)return i;}
+  return -1;
+}
+function toDateValue(s){
+  const m=String(s||'').match(/(\d{4})[\/-](\d{1,2})[\/-](\d{1,2})/); if(!m)return 0;
+  return new Date(+m[1],+m[2]-1,+m[3]).getTime();
+}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+function commentFor({cats,expense,spends}){
+  const topCats=Object.entries(cats).sort((a,b)=>b[1]-a[1]);
+  const top=topCats[0];
+  const big=spends[0];
+  const names=spends.map(x=>x.name).join(' ');
+  const pocket=spends.find(x=>/小遣い/.test(x.name)&&x.amount>=20000);
+  if(pocket) return `食費をチマチマ削る前に、${yen(pocket.amount)}持って出ていく「${pocket.name}」がいますねぇ？`;
+  if(/コンビニ/.test(names) && spends.filter(x=>/コンビニ/.test(x.name)).length>=4) return 'コンビニが点じゃなくて線になってます。そこ、散歩コースじゃないんだぞ。';
+  if(top && top[1]>=expense*0.32) return `今回の主役は「${top[0]}」で ${yen(top[1])}。家計簿なのに、この項目だけ主演俳優みたいな顔してる。`;
+  if(big && big.amount>=50000) return `最大の一撃は「${big.name}」の ${yen(big.amount)}。小銭を追う前に、まずこの親玉を見ようか。`;
+  if(expense>0 && expense<100000) return `支出 ${yen(expense)}。今回はおとなしい。だからって財布に祝勝会させるなよ。`;
+  if(expense>=250000) return `支出 ${yen(expense)}。数字がちょっと肩で風切って歩いてるな。中身を見て、必要経費と勢いを分けよう。`;
+  return `支出は ${yen(expense)}。致命傷なし。ただし「じゃあ使っていいな」に変換するのは禁止。余計簿は見てる。`;
+}
+
+function analyze(file, text){
+  const all=parseCSV(text); if(all.length<2) throw new Error('CSVの行が見つかりません。');
+  const headers=all.shift().map(x=>String(x).replace(/^\uFEFF/,'').trim());
+  const I={
+    target:findCol(headers,'計算対象'), date:findCol(headers,'日付'), content:findCol(headers,'内容'),
+    amount:findCol(headers,'金額（円）','金額'), cat:findCol(headers,'大項目')
+  };
+  if(Object.values(I).some(i=>i<0)) throw new Error('マネーフォワードCSVの必要な列を見つけられませんでした。');
+  const rows=all.filter(r=>String(r[I.target]??'').trim()==='1');
+  if(!rows.length) throw new Error('「計算対象=1」の明細がありません。');
+  let income=0,expense=0; const cats={}; const spends=[]; const dates=[];
+  for(const r of rows){
+    const n=num(r[I.amount]); const d=r[I.date]; if(d)dates.push(d);
+    if(n>0) income+=n;
+    else if(n<0){
+      const a=-n, cat=(r[I.cat]||'未分類').trim()||'未分類', name=(r[I.content]||'（内容なし）').trim()||'（内容なし）';
+      expense+=a; cats[cat]=(cats[cat]||0)+a; spends.push({name,cat,amount:a,date:d});
+    }
+  }
+  spends.sort((a,b)=>b.amount-a.amount);
+  dates.sort((a,b)=>toDateValue(a)-toDateValue(b));
+  const balance=income-expense;
+  $('filename').textContent=file.name;
+  $('period').textContent=`${dates[0]||''} 〜 ${dates[dates.length-1]||''}`;
+  $('income').textContent=yen(income); $('expense').textContent=yen(expense);
+  $('balance').textContent=yen(balance); $('balance').className=balance>=0?'good':'bad'; $('count').textContent=`${rows.length}件`;
+  const sortedCats=Object.entries(cats).sort((a,b)=>b[1]-a[1]); const max=sortedCats[0]?.[1]||1;
+  $('bars').innerHTML=sortedCats.map(([k,v])=>`<div class="barrow"><div>${escapeHTML(k)}</div><div class="track"><div class="bar" style="width:${Math.max(3,v/max*100)}%"></div></div><div class="amt">${yen(v)}</div></div>`).join('') || '<div class="note">支出なし。</div>';
+  $('ranking').innerHTML=spends.slice(0,5).map((x,i)=>`<div class="rank"><div class="n">${i+1}</div><div class="name">${escapeHTML(x.name)}<span class="cat">${escapeHTML(x.cat)}${x.date?'・'+escapeHTML(x.date):''}</span></div><div class="money">${yen(x.amount)}</div></div>`).join('') || '<div class="note">支出なし。</div>';
+  $('comment').textContent=commentFor({cats,expense,spends});
+  $('dashboard').classList.remove('hidden');
+  $('status').textContent='読み込み完了。CSVの中身は外に送っていません。';
+  setTimeout(()=>$('dashboard').scrollIntoView({behavior:'smooth',block:'start'}),80);
+}
+
+async function loadFile(file){
+  if(!file)return;
+  $('status').textContent='読み込み中…';
+  try{const text=decodeCSV(await file.arrayBuffer()); analyze(file,text);}
+  catch(e){$('dashboard').classList.add('hidden'); $('status').textContent='⚠️ '+(e?.message||'読み込みに失敗しました。');}
+  finally{$('fileInput').value='';}
+}
+$('fileInput').addEventListener('change',e=>loadFile(e.target.files?.[0]));
+$('again').addEventListener('click',()=>$('fileInput').click());
+$('clear').addEventListener('click',()=>{ $('dashboard').classList.add('hidden'); $('status').textContent='表示を消しました。CSVの中身は保存していません。'; window.scrollTo({top:0,behavior:'smooth'}); });
+</script>
+</body>
+</html>
