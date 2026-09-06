@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#222320">
+  <meta name="description" content="運勢を見るんじゃない。今日のお前に余計なことを言う。オジサンの、余計おみくじ。">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; font-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>余計おみくじ｜今日のお前に、余計な一言。</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23ad332c'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-size='44' fill='white'%3E余%3C/text%3E%3C/svg%3E">
+  <style>
+    :root{color-scheme:light;--ink:#222320;--muted:#65645f;--paper:#faf9f4;--red:#ad332c;--line:#d9d6cc;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:var(--ink);background:#eeede7;font-synthesis:none}
+    *{box-sizing:border-box}body{margin:0}button{font:inherit}button:focus-visible,summary:focus-visible{outline:3px solid var(--red);outline-offset:5px}button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+    .page{width:min(100% - 32px,440px);margin:auto;padding:24px 0 max(24px,env(safe-area-inset-bottom))}.masthead{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:16px;border-bottom:1px solid var(--ink);font-size:.875rem;letter-spacing:.08em}.masthead strong{font-weight:600}.edition{color:var(--muted)}
+    main{padding-top:22px}.ticket{position:relative;background:var(--paper);padding:28px 26px 24px;border:1px solid var(--line);border-top:5px solid var(--red);box-shadow:0 8px 22px #22232008}.ticket::after{content:"";position:absolute;left:12px;right:12px;bottom:-5px;height:4px;border:1px solid var(--line);border-top:0;background:var(--paper)}
+    .start{text-align:center;padding-top:18px}.eyebrow{font-size:.875rem;color:var(--red);letter-spacing:.16em;margin:0 0 24px}.title{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:clamp(2.1rem,9vw,2.8rem);line-height:1.5;letter-spacing:.08em;margin:0;font-weight:700}.intro{font-size:1rem;line-height:2;margin:22px 0 0}.opener{border-top:1px solid var(--line);margin:34px 0 0;padding:22px 0 10px;font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:1.2rem;line-height:1.8}.aside{font-size:.875rem;color:var(--muted);margin:4px 0 12px}
+    .ticket-top{display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:.875rem;color:var(--muted);padding-bottom:15px;border-bottom:1px solid var(--line)}.seal{color:var(--red);border:1px solid var(--red);padding:3px 6px;font-size:.875rem;letter-spacing:.07em}.fortune-label{text-align:center;font-size:.875rem;letter-spacing:.12em;margin:21px 0 6px}.fortune{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;color:var(--red);text-align:center;font-size:3.25rem;font-weight:700;line-height:1.3;margin:0;overflow-wrap:anywhere}.fortune.long{font-size:clamp(1.65rem,7.2vw,2rem)}.fortune-note{font-size:1rem;line-height:1.8;margin:17px 0 21px}.readings{margin:0;border-top:1px solid var(--line)}.reading{display:grid;grid-template-columns:2.5em 1fr;gap:14px;padding:13px 0;border-bottom:1px solid var(--line);align-items:baseline}.reading dt{font-size:.875rem;font-weight:600;letter-spacing:.12em}.reading dd{font-size:1rem;line-height:1.75;margin:0}.extra{padding-top:22px}.extra-label{font-size:.875rem;color:var(--red);margin:0 0 9px;letter-spacing:.1em}.extra-text{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:1.2rem;line-height:1.8;font-weight:600;margin:0}.signature{text-align:right;font-size:.875rem;color:var(--muted);margin:16px 0 0}
+    .controls{padding-top:25px}.draw{display:block;width:100%;min-height:58px;border:1px solid var(--ink);background:var(--ink);color:#fff;padding:16px 20px;cursor:pointer;letter-spacing:.12em;font-weight:600;border-radius:3px;transition:background .15s,transform .15s}.draw:hover{background:#3c3e38}.draw:active{transform:translateY(2px)}.draw:disabled{cursor:wait;opacity:.75}.reaction{min-height:3.4em;text-align:center;font-size:.9375rem;line-height:1.7;margin:15px 0 0;color:var(--ink)}.reaction small{display:block;color:var(--muted);font-size:.8125rem;margin-top:3px}
+    footer{text-align:center;color:var(--muted);font-size:.8125rem;line-height:1.9;margin-top:19px}.credit{font-size:.8125rem;margin:0 0 10px;letter-spacing:.025em}details{margin-top:8px}summary{cursor:pointer;width:fit-content;margin:auto;text-underline-offset:4px}details p{text-align:left;margin:12px 0 0;padding:14px 16px;background:#ffffff70;font-size:.875rem}noscript p{padding:16px;border:1px solid var(--red);line-height:1.8}.reveal{animation:reveal .25s ease-out}@keyframes reveal{from{opacity:.3;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}[hidden]{display:none!important}
+    @media(min-width:700px){.page{padding-top:40px}.ticket{padding:30px}.start{padding-top:26px}.opener{margin-top:45px}}@media(max-width:350px){.ticket{padding:22px 18px}.reading{gap:10px}.page{width:calc(100% - 24px)}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}@media print{body{background:white}.page{width:400px;max-width:100%;padding:0}.controls,footer,.masthead{display:none}.ticket{box-shadow:none}}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="masthead"><strong>余計おみくじ</strong><span class="edition">頼んでない、一言。</span></header>
+    <main>
+      <section class="ticket" id="ticket" aria-label="おみくじ">
+        <div class="start" id="start">
+          <p class="eyebrow">本日も、余計なお世話。</p>
+          <h1 class="title">余計おみくじ</h1>
+          <p class="intro">運勢を見るんじゃない。<br>今日のお前に余計なことを言う。</p>
+          <p class="opener">来たか。<br>まあ、一枚引いてけ。</p>
+          <p class="aside">いいこと言うとは限らんぞ。</p>
+        </div>
+        <div id="result" hidden>
+          <div class="ticket-top"><time id="date"></time><span class="seal">余計おみくじ</span></div>
+          <p class="fortune-label">今日の運勢</p>
+          <h2 class="fortune" id="fortune" tabindex="-1"></h2>
+          <p class="fortune-note" id="fortune-note"></p>
+          <dl class="readings">
+            <div class="reading"><dt>仕事</dt><dd id="work"></dd></div>
+            <div class="reading"><dt>金運</dt><dd id="money"></dd></div>
+            <div class="reading"><dt>恋愛</dt><dd id="love"></dd></div>
+            <div class="reading"><dt>健康</dt><dd id="health"></dd></div>
+          </dl>
+          <div class="extra"><p class="extra-label">余計な一言</p><p class="extra-text" id="extra"></p></div>
+          <p class="signature">── オジサン</p>
+        </div>
+      </section>
+      <div class="controls">
+        <button class="draw" id="draw" type="button">おみくじを引く</button>
+        <div class="reaction" role="status" aria-live="polite" aria-atomic="true"><span id="reaction">一枚でやめるかは、お前次第。</span><small id="count"></small></div>
+      </div>
+      <noscript><p>おみくじを引くにはJavaScriptを有効にしてください。iPhoneのファイルのプレビューでは動かない場合があります。公開後のページをSafariで開いてください。</p></noscript>
+    </main>
+    <footer>
+      <p class="credit">企画：森猫 ／ 制作：Work ／ 主演：オジサン</p>
+      <span>当たる保証なし。余計な一言は、あり。</span>
+      <details><summary>このおみくじについて</summary><p>用意した台詞をランダムに組み合わせる、遊びのおみくじです。AIとの通信・広告・アクセス解析はありません。入力やログインも不要です。<br><br>このアプリが保存するのは、今日の日付と引いた回数だけ。このブラウザ内に保存し、外へ送りません。翌日初めて引くときに回数をリセットします。保存できない環境では、ページを開いている間だけ数えます。<br><br>公開先のサービスが、ページを配信するためにIPアドレスなどのアクセス情報を記録する場合があります。アプリ独自の情報収集はしません。</p></details>
+    </footer>
+  </div>
+  <script>
+    'use strict';
+    /* === 台詞の編集はここから ===
+       全48本：運勢12＋仕事/金運/恋愛/健康 各5＋余計な一言6＋引き直し10。
+       同じ形で行を追加できます。外部ファイル・通信・APIキーは不要。
+       台詞はすべて textContent で表示し、HTMLとして実行しません。
+    */
+    const LINES = {
+      fortunes: [
+        {name:'大吉',text:'今日は運がいいらしいぞ。だからって全部お前の実力みたいな顔すんな。😏'},
+        {name:'吉',text:'いい日になりそうだな。わざわざ粗探しする仕事、今日は休め。'},
+        {name:'中吉',text:'悪くない。そこで「でも」を足すな。話が長くなる。'},
+        {name:'小吉',text:'小さい幸運だってよ。見栄張らずに受け取っとけ。'},
+        {name:'末吉',text:'あとから良くなるらしい。今すぐ結果を催促するな。'},
+        {name:'凶',text:'そんな顔すんな。紙切れ一枚に今日一日預ける気か。'},
+        {name:'まあ吉',text:'絶好調ではないが、まあいける。毎日主役の顔するのも疲れるだろ。'},
+        {name:'知らん吉',text:'先のことは知らん。とりあえず引きに来た暇はあるんだな。'},
+        {name:'今日は動くな',text:'勢いだけの大決断は明日でいい。ゴミ出しまで延期すんなよ。'},
+        {name:'一回寝ろ',text:'考えが深いんじゃなくて、夜が深いだけかもしれんぞ。'},
+        {name:'お前次第',text:'こっちを見るな。最後のボタンはお前が押すんだよ。'},
+        {name:'その件まだ考えてんのか',text:'脳内で何回再放送するんだ。その場面、もう台詞まで覚えただろ。'}
+      ],
+      work: [
+        '忙しそうな顔が上達してるな。肝心の一件、先に片づけろ。',
+        'その「念のため」、三回目だぞ。',
+        '全部引き受けてから不機嫌になるな。返事の前に予定を見ろ。',
+        '今日は地味な仕事が進みそうだ。拍手はない。俺が一回しとく。',
+        '完璧な下書き、いつまで下書きに住まわせる気だ。'
+      ],
+      money: [
+        '「必要経費」って言葉、最近便利に使ってないか？',
+        '安く買えた話の前に、そもそも要ったか聞いていいか。',
+        'カートに入れただけなら、まだ引き返せるぞ。',
+        '財布は静かだな。欲しいものリストだけ元気だ。',
+        '使わなかった金は、派手に褒めてもらえない。よく残したな。'
+      ],
+      love: [
+        '返事が遅いだけで脳内会議始めるな。',
+        '「別に」の後に、だいぶ続きがありそうだな。',
+        '察してほしいことだけ、やたら小声になるな。',
+        '送る前に十回読んだ文、相手は普通に読むぞ。',
+        'その人の一言で一日変わるのか。なかなかの権限を渡したな。'
+      ],
+      health: [
+        '肩、そこまで上げなくていい。耳に届ける競技じゃない。',
+        '休憩中まで効率を求めるな。休むのが下手すぎる。',
+        '画面を見る距離、また近くなってるぞ。一回遠くを見ろ。',
+        '「あと一本だけ」の動画、さっきも最後だったな。',
+        'ちょっと伸びでもしとけ。考え事まで固まってるぞ。'
+      ],
+      extra: [
+        'お前、自分に厳しいわりに、夜更かしには寛大だな。',
+        '何もしてないって言うけど、今日も何人かに気を使った顔だな。',
+        '機嫌まで人任せにするな。好きなおやつぐらい自分で選べ。',
+        '正解が欲しくて来たのか。悪いな、ここにあるのは余計な一言だ。',
+        'どうでもいいって言うには、ずいぶん詳しいな。',
+        'ここまで読んだのか。余計なことに付き合う才能、あるな。'
+      ],
+      repeat: {
+        2:'気に入る結果が出るまで引く気か？',
+        3:'まだやるのか。',
+        4:'さっきの結果、もうなかったことにしたな。',
+        5:'大吉出してやろうか？😑'
+      },
+      more: [
+        '言っとくが、忖度する機能は付いてないぞ。',
+        'もう占いじゃなくて交渉になってるな。',
+        '指だけは、ずいぶん決断が早い。',
+        'お前の粘り強さ、使う場所ここで合ってるか？',
+        'そろそろ俺の台詞も覚えてきただろ。',
+        'はいはい、もう一枚な。……帰れとは言ってない。'
+      ]
+    };
+    /* === 台詞の編集はここまで === */
+
+    const STORAGE_KEY = 'yokei.omikuji.count.v1';
+    const el = id => document.getElementById(id);
+    const button = el('draw');
+    let memory = {day:'',count:0};
+    let previous = {};
+    let busy = false;
+    function dayKey(date) {
+      return [date.getFullYear(),String(date.getMonth()+1).padStart(2,'0'),String(date.getDate()).padStart(2,'0')].join('-');
+    }
+    function readCount(day) {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        if (saved && saved.day === day && Number.isSafeInteger(saved.count) && saved.count >= 0) {
+          return Math.max(saved.count, memory.day === day ? memory.count : 0);
+        }
+      } catch (_) { /* 保存が使えない場合も、抽選は止めない。 */ }
+      return memory.day === day ? memory.count : 0;
+    }
+    function nextCount(day) {
+      memory = {day,count:Math.min(readCount(day)+1,Number.MAX_SAFE_INTEGER)};
+      try { localStorage.setItem(STORAGE_KEY,JSON.stringify(memory)); } catch (_) {}
+      return memory.count;
+    }
+    function pick(key) {
+      const choices = LINES[key];
+      let index;
+      if (choices.length > 1 && Number.isInteger(previous[key])) {
+        index = Math.floor(Math.random() * (choices.length-1));
+        if (index >= previous[key]) index++;
+      } else index = Math.floor(Math.random()*choices.length);
+      previous[key] = index;
+      return choices[index];
+    }
+    function reactionFor(count) {
+      if (count === 1) return '一枚でやめるかは、お前次第。';
+      return LINES.repeat[count] || LINES.more[(count-6) % LINES.more.length];
+    }
+    button.addEventListener('click', () => {
+      if (busy) return;
+      busy = true;
+      button.disabled = true;
+      const now = new Date();
+      const count = nextCount(dayKey(now));
+      const fortune = pick('fortunes');
+      el('date').textContent = `${now.getFullYear()}年${now.getMonth()+1}月${now.getDate()}日`;
+      el('date').dateTime = dayKey(now);
+      el('fortune').textContent = fortune.name;
+      el('fortune').classList.toggle('long',fortune.name.length > 5);
+      el('fortune-note').textContent = fortune.text;
+      for (const key of ['work','money','love','health','extra']) el(key).textContent = pick(key);
+      el('reaction').textContent = reactionFor(count);
+      el('count').textContent = `本日 ${count}枚目`;
+      el('start').hidden = true;
+      el('result').hidden = false;
+      el('result').classList.add('reveal');
+      button.textContent = 'もう一枚、引く';
+      el('fortune').focus({preventScroll:true});
+      el('ticket').scrollIntoView({block:'start',behavior:'instant'});
+      window.setTimeout(() => {
+        el('result').classList.remove('reveal');
+        busy = false;
+        button.disabled = false;
+      },300);
+    });
+  </script>
+</body>
+</html>
