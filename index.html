@@ -2,13 +2,13 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-KAM7lJUPN8ENrlsLpew+saRJZoKnynvWWHn8TsBhwdw='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-/7WSBw1XXoIzu2odZ038KG3C3YZ8lCZGLV9m95xM63U='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="余計簿">
-<meta name="theme-color" content="#c9d9eb">
+<meta name="theme-color" content="#a9c2dc">
 <title>余計簿</title>
 <style>
 :root{--bg:#f4efe4;--card:#fffdf8;--ink:#1f201d;--muted:#79766e;--line:#ded5c5;--bar:#222320;--track:#ebe4d8;--good:#2f7155;--bad:#a84536}
@@ -51,41 +51,63 @@ h2{font-size:clamp(30px,9vw,47px);line-height:1.15;margin:8px 0 24px;letter-spac
 
 .ojisan button{font-size:16px;line-height:1.5}
 
-/* 3.1 blue refresh: no external fonts, images or services */
+/* 3.2 final palette: local-only, no external fonts, images or services */
 :root{
-  --bg:#c9d9eb;
+  --bg:#a9c2dc;
   --card:#ffffff;
   --ink:#203449;
-  --muted:#617184;
-  --line:#b8c9da;
-  --bar:#2f5f91;
-  --track:#e7eef6;
-  --good:#2f7c70;
-  --bad:#b45b56;
-  --yellow:#f5cf62;
+  --muted:#5d6d7d;
+  --line:#b6c8d8;
+  --bar:#2f5b93;
+  --track:#e8eef4;
+  --good:#4f9b92;
+  --balance:#2f716f;
+  --bad:#b55243;
+  --yellow:#efc64f;
 }
 body{background:var(--bg)}
-.card{background:#fff;border-color:var(--line);box-shadow:0 4px 16px #244e7812}
+h1{color:#173451}
+.sub{color:#435d76}
+.card{background:#fff;border-color:var(--line);box-shadow:0 5px 18px #244e7817}
+.month-toolbar{background:#f4f8fc;border-color:#a9bfd3}
+.totals{border-top:5px solid #2f5b93}
 .metric{background:#f5f9fd}
-.pick{border-color:#91aac3;background:#f8fbff}
+.pick{border-color:#7f9fbd;background:#f8fbff}
 button{background:#dce7f2;color:var(--ink)}
 button.primary,button[aria-pressed="true"]{background:#244e78;color:#fff}
-button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline-color:#2f5f91}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline-color:#2f5b93}
 input,select{background:#fff;border-color:var(--line)}
 .rank{border-bottom-color:#e3ebf3}
-.ojisan{background:var(--yellow);border-color:#d2a83b;box-shadow:3px 4px 0 #c99f31;color:#2b3440}
-.ojisan .comment-reason,.comment-foot{color:#5a4a18}
+#income{color:var(--good)}
+.balance-positive{color:var(--balance)}
+.balance-negative{color:var(--bad)}
+.ojisan{background:var(--yellow);border-color:#c79c24;box-shadow:3px 4px 0 #b98f1d;color:#25313d}
+.ojisan h2{font-size:20px}
+.ojisan q{margin-bottom:22px}
 .ojisan button{background:#244e78;color:#fff}
 .donut-hole{background:#fff}
+.entry-kind{grid-column:1/-1;border:0;padding:0;margin:8px 0 2px}
+.entry-kind legend{font-weight:800;margin-bottom:8px}
+.entry-kind-options{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.entry-kind label{display:block;cursor:pointer}
+.entry-kind input{position:absolute;opacity:0;pointer-events:none}
+.entry-kind span{display:block;text-align:center;padding:12px 10px;border:1px solid var(--line);border-radius:14px;background:#f4f8fc;font-weight:850}
+.entry-kind input:checked+span{background:#244e78;color:#fff;border-color:#244e78}
+.entry-kind input:focus-visible+span{outline:3px solid #2f5b91;outline-offset:2px}
+.entry-type-badge{display:inline-block;font-size:12px;font-weight:850;border-radius:999px;padding:3px 8px;margin-right:7px;vertical-align:1px}
+.entry-type-badge.expense{background:#f7e5df;color:#934638}
+.entry-type-badge.income{background:#e2f2ef;color:#2d716a}
+.entry-amount-income{color:var(--good)}
+.entry-amount-expense{color:#934638}
 .trend{display:flex;align-items:flex-end;gap:12px;max-height:none;min-height:270px;overflow-x:auto;overflow-y:hidden;margin-top:10px;padding:16px 4px 10px;scroll-snap-type:x proximity}
 .trend-row{flex:0 0 88px;height:238px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:7px;background:transparent;border:1px solid transparent;border-radius:14px;padding:8px 5px;margin:0;text-align:center;scroll-snap-align:start}
-.trend-row[aria-pressed="true"]{background:#eef5fc;color:var(--ink);border-color:#7fa6cc}
+.trend-row[aria-pressed="true"]{background:#eef5fc;color:var(--ink);border-color:#668fb5}
 .trend-amount{font-size:12px;font-weight:850;white-space:nowrap;color:var(--ink);font-variant-numeric:tabular-nums}
 .trend-column{width:40px;height:158px;display:flex;align-items:flex-end;background:#edf3f8;border:1px solid #cedbe7;border-radius:12px 12px 8px 8px;overflow:hidden}
 .trend-bar{display:block;width:100%;min-height:4px;border-radius:10px 10px 5px 5px}
 .trend-month{font-size:12px;font-weight:850;white-space:nowrap;color:var(--muted)}
 .trend-row[aria-pressed="true"] .trend-month{color:#244e78}
-.trend-gap{flex:0 0 88px;height:220px;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;border:1px dashed #9fb4c9;border-radius:12px;color:var(--muted);font-size:12px;line-height:1.45}
+.trend-gap{flex:0 0 88px;height:220px;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;border:1px dashed #8ca8c1;border-radius:12px;color:var(--muted);font-size:12px;line-height:1.45}
 @media(max-width:650px){.trend{min-height:258px}.trend-row{flex-basis:82px;height:226px}.trend-column{height:148px;width:38px}.trend-gap{flex-basis:82px;height:208px}}
 
 </style>
@@ -99,12 +121,13 @@ input,select{background:#fff;border-color:var(--line)}
 <p id="modeNotice" class="note mode-notice">CSV・手入力・デモは、それぞれ別の家計簿です。</p>
   <section class="card hidden" id="manualPanel">
     <h2>手入力の家計簿</h2>
-    <div id="consentPanel"><p class="note">日付・金額・大項目・中項目を、この端末の現在のブラウザに保存します。次回も同じブラウザで続けられます。外部送信はしません。</p><p class="note">CSVは保存しません。氏名・住所・口座番号・カード番号・電話番号・メールアドレスなどは入力しないでください。カテゴリは用途だけにしてください。ブラウザのデータ削除で記録が失われることがあります。Safariとホーム画面版で保存場所が異なる場合は、いつも同じ方を使ってください。</p><button id="enableManual" class="primary">このブラウザに保存して始める</button></div>
+    <div id="consentPanel"><p class="note">種類（支出・収入）・日付・金額・大項目・中項目を、この端末の現在のブラウザに保存します。次回も同じブラウザで続けられます。外部送信はしません。</p><p class="note">CSVは保存しません。氏名・住所・口座番号・カード番号・電話番号・メールアドレスなどは入力しないでください。カテゴリは用途だけにしてください。ブラウザのデータ削除で記録が失われることがあります。Safariとホーム画面版で保存場所が異なる場合は、いつも同じ方を使ってください。</p><button id="enableManual" class="primary">このブラウザに保存して始める</button></div>
     <div id="manualWorkspace" class="hidden">
-    <p class="note">手入力はこのブラウザに保存中。金額は支出をプラスの整数（円）で入力。氏名・口座番号などは不要です。</p>
+    <p class="note">手入力はこのブラウザに保存中。支出か収入を選び、金額はプラスの整数（円）で入力します。氏名・口座番号などは不要です。</p>
     <form id="entryForm" class="entryform">
+      <fieldset class="entry-kind"><legend>種類</legend><div class="entry-kind-options"><label><input type="radio" name="entryType" value="expense" checked><span>支出</span></label><label><input type="radio" name="entryType" value="income"><span>収入</span></label></div></fieldset>
       <label class="field"><span>日付</span><input id="entryDate" type="date" required min="1900-01-01" max="2100-12-31"></label>
-      <label class="field"><span>支出金額（円）</span><input id="entryAmount" type="text" inputmode="numeric" pattern="[0-9,]+" maxlength="13" placeholder="例：1280" required></label>
+      <label class="field"><span>金額（円）</span><input id="entryAmount" type="text" inputmode="numeric" pattern="[0-9,]+" maxlength="13" placeholder="例：1280" required></label>
       <label class="field"><span>大項目</span><select id="entryCat" required></select></label>
       <label class="field"><span>中項目（任意）</span><input id="entrySub" maxlength="40" placeholder="例：食料品" autocomplete="off"></label>
       <div class="full actions"><button type="submit" class="primary" id="saveEntry">追加して保存</button><button type="button" id="cancelEdit" class="hidden">編集をやめる</button></div>
@@ -120,8 +143,8 @@ input,select{background:#fff;border-color:var(--line)}
   <div id="dashboard" class="hidden">
     <section class="card month-toolbar"><label for="monthSelect">ふりかえる月</label><select id="monthSelect" aria-label="表示する月"></select><p class="note" id="period"></p><p class="note">月の区切りは１日〜末日。記録がない月は「不明」として扱います。</p></section>
     <div class="overview">
-      <section class="card totals"><p class="eyebrow">月間支出</p><strong id="expense" class="monthly-amount"></strong><p id="comparison" class="comparison"></p><p id="comparisonNote" class="note"></p><div class="mini-metrics"><div><span>収入</span><strong id="income"></strong></div><div><span>差引</span><strong id="balance"></strong></div><div><span>集計件数</span><strong id="count"></strong></div></div></section>
-      <section class="card ojisan"><h2>オジサンの余計な一言</h2><q id="comment" aria-live="polite"></q><p id="commentReason" class="comment-reason"></p><button id="moreComment" type="button">もう一言 ↻</button><p class="comment-foot">選んだ月の数字から、用意した一言を選んでいます。</p></section>
+      <section class="card totals"><p class="eyebrow">月間支出</p><strong id="expense" class="monthly-amount"></strong><p id="comparison" class="comparison"></p><p id="comparisonNote" class="note"></p><div class="mini-metrics"><div><span>収入</span><strong id="income"></strong></div><div><span>差引</span><strong id="balance"></strong></div></div></section>
+      <section class="card ojisan"><h2>オジサンの余計な一言</h2><q id="comment" aria-live="polite"></q><button id="moreComment" type="button">もう一言 ↻</button></section>
     </div>
     <section class="card features-card"><h2>今月、こんな感じ。</h2><ul id="features"></ul></section>
     <div class="chart-grid">
@@ -133,9 +156,9 @@ input,select{background:#fff;border-color:var(--line)}
     <section class="card hidden" id="importDetails"><h2>今月の明細</h2><p class="note">日付・カテゴリ・金額のみ。内容やファイル名は表示しません。</p><div id="monthDetails"></div></section>
     <section class="card" id="csvActions"><p class="note">別のCSVを読むと置き換わります。元のCSVは変更しません。</p><div class="actions"><button class="primary" id="again">別のCSVを読む</button><button id="clear">データを消す</button></div></section>
   </div>
-  <section id="entriesPanel" class="card hidden"><h2>手入力の明細</h2><p class="note">選んだ月の明細を、新しい日付順に表示します。</p><div id="entries"></div><button id="deleteAll" class="danger">全部消す（保存した手入力も削除）</button></section>
-  <details class="card"><summary>保存とプライバシー</summary><p class="note">手入力は、開始ボタンを押した後に日付・支出金額・大項目・中項目と管理用IDをこのサイトのブラウザ内保存領域（LocalStorage）に保存します。暗号化やアプリ独自のロックはありません。同じ端末・ブラウザを使う人は閲覧できます。</p><p class="note">CSVは一時的な読み込みだけです。「内容」「メモ」「保有金融機関」「ID」やファイル名は分析・表示・保存しません。CSV・手入力・デモは合算しません。架空の３か月のデモは保存しません。月の区切りは毎月１日〜末日です。前月比較は入力・読み込み済みの記録のみを比べ、記録がない月は不明として扱います。CSV画面を離れると集計結果を消します。手入力の「全部消す」は保存領域と表示を削除します。元のCSVやOSのバックアップは削除しません。メモリの物理的な完全消去は保証しません。</p><p class="note">有料API・アクセス解析・広告・外部フォント・CDNは使いません。GitHub Pagesで開く際はページ取得の通信があり、配信元に通常のアクセス記録が残る可能性があります。家計データを送る処理はありません。端末のバックアップ設定や、iCloud上のCSVを選ぶ際の通信はアプリの管理外です。オフラインでの再起動は保証しません。</p></details>
-  <p class="foot">月別分析版 3.1<br>OpenAI APIなし・有料APIなし・従量課金なし。<br>CSVは「計算対象」= 1、振替以外を集計。<br>CSVは保存なし。手入力は同意後にこのブラウザに保存。家計データの送信なし。</p>
+  <section id="entriesPanel" class="card hidden"><h2>手入力の明細</h2><p class="note">選んだ月の支出・収入明細を、新しい日付順に表示します。</p><div id="entries"></div><button id="deleteAll" class="danger">全部消す（保存した手入力も削除）</button></section>
+  <details class="card"><summary>保存とプライバシー</summary><p class="note">手入力は、開始ボタンを押した後に種類（支出・収入）・日付・金額・大項目・中項目と管理用IDをこのサイトのブラウザ内保存領域（LocalStorage）に保存します。暗号化やアプリ独自のロックはありません。同じ端末・ブラウザを使う人は閲覧できます。</p><p class="note">CSVは一時的な読み込みだけです。「内容」「メモ」「保有金融機関」「ID」やファイル名は分析・表示・保存しません。CSV・手入力・デモは合算しません。架空の３か月のデモは保存しません。月の区切りは毎月１日〜末日です。前月比較は入力・読み込み済みの記録のみを比べ、記録がない月は不明として扱います。CSV画面を離れると集計結果を消します。手入力の「全部消す」は保存領域と表示を削除します。元のCSVやOSのバックアップは削除しません。メモリの物理的な完全消去は保証しません。</p><p class="note">有料API・アクセス解析・広告・外部フォント・CDNは使いません。GitHub Pagesで開く際はページ取得の通信があり、配信元に通常のアクセス記録が残る可能性があります。家計データを送る処理はありません。端末のバックアップ設定や、iCloud上のCSVを選ぶ際の通信はアプリの管理外です。オフラインでの再起動は保証しません。</p></details>
+  <p class="foot">月別分析版 3.2<br>OpenAI APIなし・有料APIなし・従量課金なし。<br>CSVは「計算対象」= 1、振替以外を集計。<br>CSVは保存なし。手入力の支出・収入は同意後にこのブラウザに保存。家計データの送信なし。</p>
 </main>
 <script>
 'use strict';
@@ -178,24 +201,35 @@ function toDateValue(s){
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 
 const STORE='yokeibo.manual.v2';
-const CATEGORIES=['食費','日用品','交通費','趣味・娯楽','衣服・美容','健康・医療','交際費','教養・教育','住宅','水道・光熱費','通信費','自動車','保険','税・社会保障','その他'];
+const EXPENSE_CATEGORIES=['食費','日用品','交通費','趣味・娯楽','衣服・美容','健康・医療','交際費','教養・教育','住宅','水道・光熱費','通信費','自動車','保険','税・社会保障','その他'];
+const INCOME_CATEGORIES=['給与','賞与','臨時収入','返金','その他収入'];
 let mode='csv', manual=[], enabled=false, editing=null, generation=0, seen=null, corrupt=false;
 let activeRows=[], selectedMonth='', commentBag=[], lastComment='', commentContext='';
 function today(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
 function dateValid(s){if(!/^\d{4}-\d{2}-\d{2}$/.test(s)||s<'1900-01-01'||s>'2100-12-31')return false;const [y,m,d]=s.split('-').map(Number), t=new Date(y,m-1,d);return t.getFullYear()===y&&t.getMonth()===m-1&&t.getDate()===d;}
 function integerAmount(v){const s=String(v).trim();if(!/^(?:\d+|\d{1,3}(?:,\d{3})+)$/.test(s))throw new Error('金額は1円以上の整数で入力してください。');const n=Number(s.replaceAll(',',''));if(!Number.isSafeInteger(n)||n<1||n>999999999)throw new Error('金額は1〜999,999,999円で入力してください。');return n;}
-function validRecords(data){return Array.isArray(data)&&data.length<=10000&&data.every(r=>r&&typeof r.id==='string'&&r.id.length<100&&dateValid(r.date)&&Number.isInteger(r.amount)&&r.amount>=1&&r.amount<=999999999&&CATEGORIES.includes(r.cat)&&typeof r.subcat==='string'&&r.subcat.length<=40)&&new Set(data.map(r=>r.id)).size===data.length;}
-function cleanRecords(rows){return rows.map(({id,date,amount,cat,subcat})=>({id,date,amount,cat,subcat}));}
-function readStore(){const raw=localStorage.getItem(STORE);if(raw===null)return {raw,rows:[],active:false};const o=JSON.parse(raw);if(o.version!==2||!validRecords(o.rows))throw new Error('保存データの形式を確認できません。上書きしていません。');return {raw,rows:cleanRecords(o.rows),active:true};}
-function persist(next){if(!validRecords(next))throw new Error('保存できるのは10,000件までです。');if(corrupt)throw new Error('保存データを確認できないため上書きを止めています。');if(localStorage.getItem(STORE)!==seen){restoreManual();throw new Error('別の画面で更新されました。最新の明細を確認して、もう一度操作してください。');}const raw=JSON.stringify({version:2,rows:cleanRecords(next)});localStorage.setItem(STORE,raw);seen=raw;manual=next;enabled=true;}
-function resetForm(){editing=null;$('entryForm').reset();$('entryDate').value=today();$('saveEntry').textContent='追加して保存';$('cancelEdit').classList.add('hidden');}
-function wipeResult(){activeRows=[];commentBag=[];lastComment='';commentContext='';for(const id of ['monthSelect','features','growth','trend','donutLegend','monthDetails','comparison','comparisonNote','commentReason'])$(id).replaceChildren();$('donut').style.background='var(--track)';$('donut').setAttribute('aria-label','支出データなし');$('donutTotal').textContent='';$('moreComment').disabled=true;for(const id of ['period','income','expense','balance','count','comment'])$(id).textContent='';$('balance').className='';$('bars').replaceChildren();$('ranking').replaceChildren();$('dashboard').classList.add('hidden');}
+function validLegacyRecords(data){return Array.isArray(data)&&data.length<=10000&&data.every(r=>r&&typeof r.id==='string'&&r.id.length<100&&dateValid(r.date)&&Number.isInteger(r.amount)&&r.amount>=1&&r.amount<=999999999&&EXPENSE_CATEGORIES.includes(r.cat)&&typeof r.subcat==='string'&&r.subcat.length<=40)&&new Set(data.map(r=>r.id)).size===data.length;}
+function validRecords(data){return Array.isArray(data)&&data.length<=10000&&data.every(r=>r&&typeof r.id==='string'&&r.id.length<100&&dateValid(r.date)&&Number.isInteger(r.amount)&&r.amount>=1&&r.amount<=999999999&&(r.type==='expense'||r.type==='income')&&((r.type==='expense'&&EXPENSE_CATEGORIES.includes(r.cat))||(r.type==='income'&&INCOME_CATEGORIES.includes(r.cat)))&&typeof r.subcat==='string'&&r.subcat.length<=40)&&new Set(data.map(r=>r.id)).size===data.length;}
+function cleanRecords(rows){return rows.map(({id,date,amount,cat,subcat,type})=>({id,date,amount,cat,subcat,type}));}
+function readStore(){const raw=localStorage.getItem(STORE);if(raw===null)return {raw,rows:[],active:false};const o=JSON.parse(raw);if(o.version===2){if(!validLegacyRecords(o.rows))throw new Error('保存データの形式を確認できません。上書きしていません。');return {raw,rows:o.rows.map(r=>({...r,type:'expense'})),active:true};}if(o.version!==3||!validRecords(o.rows))throw new Error('保存データの形式を確認できません。上書きしていません。');return {raw,rows:cleanRecords(o.rows),active:true};}
+function persist(next){if(!validRecords(next))throw new Error('保存できるのは10,000件までです。');if(corrupt)throw new Error('保存データを確認できないため上書きを止めています。');if(localStorage.getItem(STORE)!==seen){restoreManual();throw new Error('別の画面で更新されました。最新の明細を確認して、もう一度操作してください。');}const raw=JSON.stringify({version:3,rows:cleanRecords(next)});localStorage.setItem(STORE,raw);seen=raw;manual=next;enabled=true;}
+function entryType(){return document.querySelector('input[name="entryType"]:checked')?.value||'expense';}
+function entryCategories(type){return type==='income'?INCOME_CATEGORIES:EXPENSE_CATEGORIES;}
+function fillEntryCategories(type,selected=''){const select=$('entryCat');select.replaceChildren();for(const cat of entryCategories(type)){const o=document.createElement('option');o.value=cat;o.textContent=cat;select.append(o);}if(selected&&entryCategories(type).includes(selected))select.value=selected;$('entrySub').placeholder=type==='income'?'例：給与・返金など':'例：食料品';}
+function resetForm(){editing=null;$('entryForm').reset();$('entryDate').value=today();fillEntryCategories('expense');$('saveEntry').textContent='追加して保存';$('cancelEdit').classList.add('hidden');}
+function wipeResult(){activeRows=[];commentBag=[];lastComment='';commentContext='';for(const id of ['monthSelect','features','growth','trend','donutLegend','monthDetails','comparison','comparisonNote'])$(id).replaceChildren();$('donut').style.background='var(--track)';$('donut').setAttribute('aria-label','支出データなし');$('donutTotal').textContent='';$('moreComment').disabled=true;for(const id of ['period','income','expense','balance','comment'])$(id).textContent='';$('balance').className='';$('bars').replaceChildren();$('ranking').replaceChildren();$('dashboard').classList.add('hidden');}
 function clearCSV(){generation++;$('fileInput').value='';wipeResult();$('status').textContent='CSVの集計結果を消しました。元のファイルは変更していません。';}
-function showManual(){ $('consentPanel').classList.toggle('hidden',enabled);$('manualWorkspace').classList.toggle('hidden',!enabled);$('entriesPanel').classList.toggle('hidden',!enabled&&!corrupt);if(enabled){render(manual.map(r=>({...r,n:-r.amount})));renderEntries();}else{wipeResult();$('entries').replaceChildren();}}
+function showManual(){ $('consentPanel').classList.toggle('hidden',enabled);$('manualWorkspace').classList.toggle('hidden',!enabled);$('entriesPanel').classList.toggle('hidden',!enabled&&!corrupt);if(enabled){render(manual.map(r=>({...r,n:r.type==='income'?r.amount:-r.amount})));renderEntries();}else{wipeResult();$('entries').replaceChildren();}}
 function restoreManual(){try{const state=readStore();seen=state.raw;manual=state.rows;enabled=state.active;corrupt=false;resetForm();$('manualStatus').textContent='';showManual();}catch(e){manual=[];enabled=false;corrupt=true;resetForm();showManual();$('consentPanel').classList.remove('hidden');$('entries').textContent='保存領域を読み出せません。ブラウザの設定、または保存データをご確認ください。記録を捨てる場合だけ「全部消す」を使ってください。';}}
-function switchMode(next){clearCSV();selectedMonth='';mode=next;$('demoMode').setAttribute('aria-pressed',String(next==='demo'));$('modeNotice').textContent=next==='demo'?'デモ・完全な架空の３か月。保存済みの手入力には触れません。':next==='manual'?'手入力の記録だけを分析します。CSVやデモは混ざりません。':'CSVは一時利用。別のモードに移ると読み込み結果を消します。';$('csvMode').setAttribute('aria-pressed',String(next==='csv'));$('manualMode').setAttribute('aria-pressed',String(next==='manual'));$('pickerCard').classList.toggle('hidden',next!=='csv');$('manualPanel').classList.toggle('hidden',next!=='manual');$('csvActions').classList.toggle('hidden',next!=='csv');$('entriesPanel').classList.add('hidden');$('status').textContent='CSVは一時利用。外部送信・自動保存はしません。';if(next==='manual')restoreManual();else{manual=[];enabled=false;resetForm();$('entries').replaceChildren();$('manualStatus').textContent='';if(next==='demo')render(makeDemo());}}
+function switchMode(next){clearCSV();selectedMonth='';mode=next;$('demoMode').setAttribute('aria-pressed',String(next==='demo'));$('modeNotice').textContent=next==='demo'?'デモ・完全な架空の３か月。保存済みの手入力には触れません。':next==='manual'?'手入力の支出・収入記録だけを分析します。CSVやデモは混ざりません。':'CSVは一時利用。別のモードに移ると読み込み結果を消します。';$('csvMode').setAttribute('aria-pressed',String(next==='csv'));$('manualMode').setAttribute('aria-pressed',String(next==='manual'));$('pickerCard').classList.toggle('hidden',next!=='csv');$('manualPanel').classList.toggle('hidden',next!=='manual');$('csvActions').classList.toggle('hidden',next!=='csv');$('entriesPanel').classList.add('hidden');$('status').textContent='CSVは一時利用。外部送信・自動保存はしません。';if(next==='manual')restoreManual();else{manual=[];enabled=false;resetForm();$('entries').replaceChildren();$('manualStatus').textContent='';if(next==='demo')render(makeDemo());}}
 function makeRecordId(){return Array.from(crypto.getRandomValues(new Uint8Array(16)),b=>b.toString(16).padStart(2,'0')).join('');}
-const PALETTE=['#2f5f91','#5d93c6','#8cb7de','#4f9b92','#d2a64c'];
+const CATEGORY_COLORS={
+  '住宅':'#2f5b93','趣味・娯楽':'#6fa8e8','食費':'#c65a46','水道・光熱費':'#4fa39a','日用品':'#d1a23c','通信費':'#7e9b4a',
+  '交通費':'#86a9c7','健康・医療':'#d4866c','衣服・美容':'#d99a78','交際費':'#c28a4d','教養・教育':'#4f88b6',
+  '自動車':'#6c879b','保険':'#879d75','税・社会保障':'#a6afb8','その他':'#c9cdd3','未分類':'#b7bec6'
+};
+const FALLBACK_COLORS=['#2f5b93','#c65a46','#4fa39a','#d1a23c','#7e9b4a','#6fa8e8','#9ca9b5'];
+function categoryColor(cat){if(CATEGORY_COLORS[cat])return CATEGORY_COLORS[cat];let h=0;for(const ch of cat)h=(h*31+ch.codePointAt(0))>>>0;return FALLBACK_COLORS[h%FALLBACK_COLORS.length];}
 function monthLabel(key){return `${key.slice(0,4)}年${Number(key.slice(5))}月`;}
 function prevMonth(key){const [y,m]=key.split('-').map(Number);return `${m===1?y-1:y}-${String(m===1?12:m-1).padStart(2,'0')}`;}
 function nextMonth(key){const [y,m]=key.split('-').map(Number);return `${m===12?y+1:y}-${String(m===12?1:m+1).padStart(2,'0')}`;}
@@ -203,13 +237,13 @@ function summarize(rows){let income=0,expense=0;const cats=Object.create(null),s
 function monthAnalysis(rows,key){const current=summarize(rows.filter(r=>r.date.slice(0,7)===key)), previousRows=rows.filter(r=>r.date.slice(0,7)===prevMonth(key)),previous=previousRows.length?summarize(previousRows):null;const delta=previous?current.expense-previous.expense:null,percent=previous&&previous.expense>0?delta/previous.expense*100:null;const growth=previous?Object.entries(current.cats).map(([cat,amount])=>{const before=previous.cats[cat]||0;return {cat,amount,before,delta:amount-before,percent:before>0?(amount-before)/before*100:null};}).filter(x=>x.delta>=3000&&(x.percent===null||x.percent>=20)).sort((a,b)=>b.delta-a.delta):[];const groups=new Map();for(const r of current.spends){const label=r.subcat.trim();if(!label)continue;const groupKey=r.cat+'\u0000'+label;if(!groups.has(groupKey))groups.set(groupKey,[]);groups.get(groupKey).push(r);}let repeated=null;for(const g of groups.values()){g.sort((a,b)=>a.date.localeCompare(b.date));let left=0;for(let right=0;right<g.length;right++){while(Date.parse(g[right].date)-Date.parse(g[left].date)>6*86400000)left++;const count=right-left+1;if(count>=3&&(!repeated||count>repeated.count))repeated={count,cat:g[right].cat,amount:g.slice(left,right+1).reduce((s,r)=>s+r.amount,0)};}}return {...current,key,previous,delta,percent,growth,repeated,small:current.spends.filter(r=>r.amount<=1000),big:current.spends.filter(r=>r.amount>=10000)};}
 function makeDemo(){const rows=[];const add=(m,d,a,cat,subcat)=>rows.push({date:`2026-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`,n:-a,cat,subcat});for(const m of [6,7,8]){add(m,1,-260000,'収入','架空の給与');add(m,2,65000,'住宅','家賃');add(m,3,5500,'通信費','通信');add(m,4,11000,'水道・光熱費','電気・水道');add(m,5,4200,'交通費','電車');for(const d of [6,13,20,27])add(m,d,4600+(m-6)*400,'食費','食料品');for(const d of [7,14,21])add(m,d,1400+(m-6)*500,'食費','外食');add(m,10,2800+(m-6)*2100,'日用品','消耗品');add(m,24,3000,'健康・医療','通院');add(m,30,1500,'その他','その他');}for(const d of [16,17,18,20,22,26])add(8,d,650,'食費','カフェ');add(8,12,38000,'趣味・娯楽','旅行');add(7,15,14000,'衣服・美容','衣服');return rows;}
 function render(rows){activeRows=rows.map(r=>({date:r.date,n:r.n,cat:r.cat,subcat:r.subcat||''}));const months=[...new Set(activeRows.map(r=>r.date.slice(0,7)))].sort();if(!months.includes(selectedMonth))selectedMonth=months.at(-1)||today().slice(0,7);const select=$('monthSelect');select.replaceChildren();for(const key of months.length?months:[selectedMonth]){const o=document.createElement('option');o.value=key;o.textContent=monthLabel(key);select.append(o);}select.value=selectedMonth;drawMonth();}
-function drawMonth(){const a=monthAnalysis(activeRows,selectedMonth);$('period').textContent=`${mode==='manual'?'手入力':mode==='demo'?'デモ・架空データ':'CSV'} ／ ${monthLabel(selectedMonth)}・${a.rows.length}件`;$('expense').textContent=yen(a.expense);$('income').textContent=yen(a.income);$('balance').textContent=yen(a.income-a.expense);$('balance').className=a.income>=a.expense?'good':'bad';$('count').textContent=a.rows.length+'件';$('comparison').textContent=!a.previous?'比較できる前月データなし':a.delta===0?'前月の記録と同額':`前月の記録より ${a.delta>0?'+':'−'}${yen(Math.abs(a.delta))} ／ ${a.percent===null?'前月の支出０円・増減率なし':(a.percent>0?'+':'')+a.percent.toFixed(1)+'%'}`;$('comparisonNote').textContent='入力・読み込み済みの記録だけの比較です。月途中や未入力の分は含みません。';drawCategories(a);drawTrend();drawGrowth(a);drawFeatures(a);drawRanking(a);prepareComments(a);$('dashboard').classList.remove('hidden');$('importDetails').classList.toggle('hidden',mode==='manual');if(mode!=='manual')drawImportedDetails(a);else $('monthDetails').replaceChildren();$('csvActions').classList.toggle('hidden',mode!=='csv');}
-function drawCategories(a){const sorted=Object.entries(a.cats).sort((x,y)=>y[1]-x[1]);let offset=0;const segments=[];const legend=$('donutLegend');legend.replaceChildren();sorted.forEach(([cat,amount],i)=>{const percent=amount/a.expense*100,color=PALETTE[i%PALETTE.length];segments.push(`${color} ${offset}% ${offset+percent}%`);offset+=percent;const row=document.createElement('div');row.className='legend-row';const swatch=document.createElement('span');swatch.className='swatch';swatch.style.background=color;swatch.setAttribute('aria-hidden','true');const title=document.createElement('span');title.className='legend-label';title.textContent=cat;const val=document.createElement('span');val.className='legend-value';val.textContent=yen(amount);const pct=document.createElement('small');pct.textContent=percent.toFixed(1)+'%';val.append(pct);row.append(swatch,title,val);legend.append(row);});$('donut').style.background=segments.length?`conic-gradient(${segments.join(',')})`:'var(--track)';$('donut').setAttribute('aria-label',segments.length?'カテゴリ別支出。'+sorted.map(([c,n])=>`${c} ${(n/a.expense*100).toFixed(1)}%`).join('、'):'この月の支出はありません');$('donutTotal').textContent=yen(a.expense);if(!sorted.length)legend.textContent='この月の支出はありません。';const max=sorted[0]?.[1]||1;$('bars').innerHTML=sorted.map(([cat,n])=>`<div class="barrow"><div>${escapeHTML(cat)}</div><div class="track"><div class="bar" style="width:${n/max*100}%"></div></div><div class="amt">${yen(n)}</div></div>`).join('');}
+function drawMonth(){const a=monthAnalysis(activeRows,selectedMonth);$('period').textContent=`${mode==='manual'?'手入力':mode==='demo'?'デモ・架空データ':'CSV'} ／ ${monthLabel(selectedMonth)}・${a.rows.length}件`;$('expense').textContent=yen(a.expense);$('income').textContent=yen(a.income);$('balance').textContent=yen(a.income-a.expense);$('balance').className=a.income>=a.expense?'balance-positive':'balance-negative';$('comparison').textContent=!a.previous?'比較できる前月データなし':a.delta===0?'前月の記録と同額':`前月の記録より ${a.delta>0?'+':'−'}${yen(Math.abs(a.delta))} ／ ${a.percent===null?'前月の支出０円・増減率なし':(a.percent>0?'+':'')+a.percent.toFixed(1)+'%'}`;$('comparisonNote').textContent='入力・読み込み済みの記録だけの比較です。月途中や未入力の分は含みません。';drawCategories(a);drawTrend();drawGrowth(a);drawFeatures(a);drawRanking(a);prepareComments(a);$('dashboard').classList.remove('hidden');$('importDetails').classList.toggle('hidden',mode==='manual');if(mode!=='manual')drawImportedDetails(a);else $('monthDetails').replaceChildren();$('csvActions').classList.toggle('hidden',mode!=='csv');}
+function drawCategories(a){const sorted=Object.entries(a.cats).sort((x,y)=>y[1]-x[1]);let offset=0;const segments=[];const legend=$('donutLegend');legend.replaceChildren();sorted.forEach(([cat,amount])=>{const percent=amount/a.expense*100,color=categoryColor(cat);segments.push(`${color} ${offset}% ${offset+percent}%`);offset+=percent;const row=document.createElement('div');row.className='legend-row';const swatch=document.createElement('span');swatch.className='swatch';swatch.style.background=color;swatch.setAttribute('aria-hidden','true');const title=document.createElement('span');title.className='legend-label';title.textContent=cat;const val=document.createElement('span');val.className='legend-value';val.textContent=yen(amount);const pct=document.createElement('small');pct.textContent=percent.toFixed(1)+'%';val.append(pct);row.append(swatch,title,val);legend.append(row);});$('donut').style.background=segments.length?`conic-gradient(${segments.join(',')})`:'var(--track)';$('donut').setAttribute('aria-label',segments.length?'カテゴリ別支出。'+sorted.map(([c,n])=>`${c} ${(n/a.expense*100).toFixed(1)}%`).join('、'):'この月の支出はありません');$('donutTotal').textContent=yen(a.expense);if(!sorted.length)legend.textContent='この月の支出はありません。';const max=sorted[0]?.[1]||1;$('bars').innerHTML=sorted.map(([cat,n])=>`<div class="barrow"><div>${escapeHTML(cat)}</div><div class="track"><div class="bar" style="width:${n/max*100}%;background:${categoryColor(cat)}"></div></div><div class="amt">${yen(n)}</div></div>`).join('');}
 function drawTrend(){
   const totals=new Map();
   for(const r of activeRows){const key=r.date.slice(0,7);totals.set(key,(totals.get(key)||0)+Math.max(0,-r.n));}
   const months=[...totals.keys()].sort(),max=Math.max(1,...totals.values()),root=$('trend');
-  const trendColors=['#5d93c6','#4f9b92','#d2a64c'];
+  const trendColors=['#2f5b93','#4fa39a','#c65a46','#d1a23c'];
   root.replaceChildren();
   if(!months.length){root.textContent='明細を追加すると、月ごとの支出が見られます。';return;}
   let last=null;
@@ -227,7 +261,7 @@ function drawTrend(){
     const column=document.createElement('span');column.className='trend-column';column.setAttribute('aria-hidden','true');
     const bar=document.createElement('span');bar.className='trend-bar';
     bar.style.height=Math.max(4,totals.get(key)/max*100)+'%';
-    bar.style.background=key===selectedMonth?'#244e78':trendColors[i%trendColors.length];
+    bar.style.background=trendColors[i%trendColors.length];
     column.append(bar);
     const title=document.createElement('span');title.className='trend-month';title.textContent=key;
     button.append(amount,column,title);
@@ -245,10 +279,19 @@ function commentCandidates(a){
   const top=Object.entries(a.cats).sort((x,y)=>y[1]-x[1])[0];
   const byWord=regex=>a.spends.filter(r=>regex.test(r.cat+' '+r.subcat));
   if(!a.spends.length){
+    if(a.income>0){
+      add('incomeOnly',`この月の記録済み収入：${yen(a.income)}。支出記録はありません。`,[
+        `収入${yen(a.income)}。入ってくる方だけ見ると景気いいな。支出が未入力なら、そこで勝利宣言すんなよ。`,
+        '入金は確認した。財布が厚くなった瞬間だけ切り取ると、人はだいたい強気になる。',
+        '収入だけ先に座ってるな。支出が来るまでそのドヤ顔は保留だ😏',
+        '入ってきた金はちゃんと記録したか。えらい。だからって全部使う許可証ではない。'
+      ]);
+      return options;
+    }
     add('empty','この月の記録に支出なし。未入力かどうかは判断しません。',[
       'まだ数字が来てねぇな。オジサンまで架空の説教を始めるわけにはいかん。',
       '支出欄が空だな。「使ってない」と「まだ入れてない」は別だからな😏',
-      '出番待ちだ。数字を置いてけ、余計な一言はこっちで用意してある。',
+      '出番待ちだ。数字を置いてけ。余計な一言はそのあとだ。',
       'この月は記録上、支出なし。空欄相手に勝ち誇るほどオジサンも暇じゃない。',
       '真っ白だな。節約の天才か入力前か、俺にはまだ判決できん。',
       '材料ゼロで毒舌を要求するな。さすがにそれは当たり屋だ。'
@@ -483,17 +526,18 @@ function commentCandidates(a){
   return options;
 }
 function prepareComments(a){const pool=commentCandidates(a),context=JSON.stringify([mode,a.key,a.rows,a.previous?.rows]);if(context!==commentContext){commentContext=context;commentBag=[];}pickComment(pool);}
-function pickComment(pool){if(!activeRows.length&&mode==='csv')return;const eligible=pool||commentCandidates(monthAnalysis(activeRows,selectedMonth));if(!commentBag.length){commentBag=[...eligible];for(let i=commentBag.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[commentBag[i],commentBag[j]]=[commentBag[j],commentBag[i]];}if(commentBag.length>1&&commentBag.at(-1).text===lastComment)[commentBag[0],commentBag[commentBag.length-1]]=[commentBag.at(-1),commentBag[0]];}const item=commentBag.pop();if(!item)return;lastComment=item.text;$('comment').textContent=item.text;$('commentReason').textContent='見ている数字：'+item.reason;$('moreComment').disabled=eligible.length<2;}
+function pickComment(pool){if(!activeRows.length&&mode==='csv')return;const eligible=pool||commentCandidates(monthAnalysis(activeRows,selectedMonth));if(!commentBag.length){commentBag=[...eligible];for(let i=commentBag.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[commentBag[i],commentBag[j]]=[commentBag[j],commentBag[i]];}if(commentBag.length>1&&commentBag.at(-1).text===lastComment)[commentBag[0],commentBag[commentBag.length-1]]=[commentBag.at(-1),commentBag[0]];}const item=commentBag.pop();if(!item)return;lastComment=item.text;$('comment').textContent=item.text;$('moreComment').disabled=eligible.length<2;}
 
-function renderEntries(){const list=$('entries');list.replaceChildren();const shown=manual.filter(r=>r.date.slice(0,7)===selectedMonth);if(!shown.length){list.textContent='この月の明細はありません。上の欄から１件追加できます。';return;}for(const r of [...shown].sort((a,b)=>b.date.localeCompare(a.date))){const row=document.createElement('div');row.className='entry';const head=document.createElement('div');head.className='entryhead';const title=document.createElement('strong');title.textContent=r.cat+(r.subcat?' / '+r.subcat:'');const amount=document.createElement('strong');amount.textContent=yen(r.amount);head.append(title,amount);const date=document.createElement('div');date.className='note';date.textContent=r.date;const edit=document.createElement('button');edit.type='button';edit.textContent='編集';edit.setAttribute('aria-label',r.date+'の明細を編集');edit.onclick=()=>{editing=r.id;$('entryDate').value=r.date;$('entryAmount').value=r.amount;$('entryCat').value=r.cat;$('entrySub').value=r.subcat;$('saveEntry').textContent='変更を保存';$('cancelEdit').classList.remove('hidden');$('entryDate').focus();};const del=document.createElement('button');del.textContent='削除';del.type='button';del.onclick=()=>{if(!confirm('この明細１件を削除しますか？'))return;try{persist(manual.filter(x=>x.id!==r.id));if(editing===r.id)resetForm();showManual();$('manualStatus').textContent='１件削除しました。';}catch(e){$('manualStatus').textContent='削除できませんでした。'+e.message;}};row.append(head,date,edit,del);list.append(row);}}
+function renderEntries(){const list=$('entries');list.replaceChildren();const shown=manual.filter(r=>r.date.slice(0,7)===selectedMonth);if(!shown.length){list.textContent='この月の明細はありません。上の欄から１件追加できます。';return;}for(const r of [...shown].sort((a,b)=>b.date.localeCompare(a.date))){const row=document.createElement('div');row.className='entry';const head=document.createElement('div');head.className='entryhead';const title=document.createElement('strong');const badge=document.createElement('span');badge.className='entry-type-badge '+r.type;badge.textContent=r.type==='income'?'収入':'支出';title.append(badge,document.createTextNode(r.cat+(r.subcat?' / '+r.subcat:'')));const amount=document.createElement('strong');amount.className=r.type==='income'?'entry-amount-income':'entry-amount-expense';amount.textContent=(r.type==='income'?'+':'−')+yen(r.amount);head.append(title,amount);const date=document.createElement('div');date.className='note';date.textContent=r.date;const edit=document.createElement('button');edit.type='button';edit.textContent='編集';edit.setAttribute('aria-label',r.date+'の明細を編集');edit.onclick=()=>{editing=r.id;$('entryDate').value=r.date;$('entryAmount').value=r.amount;const radio=document.querySelector(`input[name="entryType"][value="${r.type}"]`);if(radio)radio.checked=true;fillEntryCategories(r.type,r.cat);$('entrySub').value=r.subcat;$('saveEntry').textContent='変更を保存';$('cancelEdit').classList.remove('hidden');$('entryDate').focus();};const del=document.createElement('button');del.textContent='削除';del.type='button';del.onclick=()=>{if(!confirm('この明細１件を削除しますか？'))return;try{persist(manual.filter(x=>x.id!==r.id));if(editing===r.id)resetForm();showManual();$('manualStatus').textContent='１件削除しました。';}catch(e){$('manualStatus').textContent='削除できませんでした。'+e.message;}};row.append(head,date,edit,del);list.append(row);}}
 function analyze(text){const all=parseCSV(text);if(all.length<2)throw new Error('明細がありません。');const headers=all.shift();const I={target:findCol(headers,'計算対象'),date:findCol(headers,'日付'),amount:findCol(headers,'金額（円）','金額(円)','金額'),cat:findCol(headers,'大項目'),sub:findCol(headers,'中項目'),transfer:findCol(headers,'振替')};if([I.target,I.date,I.amount,I.cat].some(i=>i<0))throw new Error('必要な列：計算対象・日付・金額（円）・大項目を確認してください。');if(all.length>100000)throw new Error('CSVは10万行以内にしてください。');const rows=[];for(const [i,r] of all.entries()){if(String(r[I.target]).trim()!=='1'||(I.transfer>=0&&String(r[I.transfer]).trim()==='1'))continue;const raw=String(r[I.amount]??'').trim().replace(/[￥¥]/g,'');if(!/^-?(?:\d+|\d{1,3}(?:,\d{3})+)$/.test(raw))throw new Error(`${i+2}行目の金額を確認してください。`);const n=Number(raw.replaceAll(',',''));if(!Number.isSafeInteger(n)||Math.abs(n)>999999999)throw new Error(`${i+2}行目の金額が範囲外です。`);const parts=String(r[I.date]||'').trim().match(/^(\d{4})[/-](\d{1,2})[/-](\d{1,2})$/);const date=parts?`${parts[1]}-${parts[2].padStart(2,'0')}-${parts[3].padStart(2,'0')}`:'';if(!dateValid(date))throw new Error(`${i+2}行目の日付を確認してください。`);rows.push({date,n,cat:String(r[I.cat]||'未分類').trim().slice(0,80)||'未分類',subcat:I.sub>=0?String(r[I.sub]||'').trim().slice(0,80):''});}if(!rows.length)throw new Error('集計対象の明細がありません。');render(rows);}
 async function loadFile(file){if(!file)return;clearCSV();const token=generation;$('status').textContent='読み込み中…';try{if(file.size>12*1024*1024)throw new Error('CSVは12MB以内にしてください。');const buffer=await file.arrayBuffer();if(token!==generation||mode!=='csv')return;analyze(decodeCSV(buffer));$('status').textContent='読み込み完了。CSVは保存・送信していません。';}catch(e){if(token!==generation||mode!=='csv')return;wipeResult();$('status').textContent='読み込みできませんでした。'+e.message;}finally{if(token===generation)$('fileInput').value='';}}
-for(const cat of CATEGORIES){const o=document.createElement('option');o.value=cat;o.textContent=cat;$('entryCat').append(o);}
+fillEntryCategories('expense');
+for(const radio of document.querySelectorAll('input[name="entryType"]'))radio.addEventListener('change',()=>fillEntryCategories(entryType()));
 resetForm();
 $('demoMode').onclick=()=>switchMode('demo');$('monthSelect').addEventListener('change',()=>{selectedMonth=$('monthSelect').value;drawMonth();if(mode==='manual')renderEntries();});$('moreComment').onclick=()=>pickComment();
 $('csvMode').onclick=()=>switchMode('csv');$('manualMode').onclick=()=>switchMode('manual');
 $('enableManual').onclick=()=>{try{const state=readStore();seen=state.raw;manual=state.rows;corrupt=false;persist(manual);resetForm();showManual();$('manualStatus').textContent='このブラウザに保存します。まず１件入力してみよう。';}catch(e){$('entriesPanel').classList.remove('hidden');$('entries').textContent='保存を開始できませんでした。ブラウザの保存設定をご確認ください。既存データは上書きしていません。';}};
-$('entryForm').addEventListener('submit',e=>{e.preventDefault();try{if(!enabled)throw new Error('保存を開始してください。');const date=$('entryDate').value;if(!dateValid(date))throw new Error('日付を確認してください。');const amount=integerAmount($('entryAmount').value),cat=$('entryCat').value,subcat=$('entrySub').value.trim();if(/@|(?:[0-9０-９][\s()（）+＋−ー-]*){7,}/.test(subcat))throw new Error('中項目に連絡先や番号は入れず、用途だけを書いてください。');if(!CATEGORIES.includes(cat)||subcat.length>40)throw new Error('カテゴリを確認してください。');if(editing&&!manual.some(r=>r.id===editing))throw new Error('編集対象がなくなりました。');const entry={id:editing||makeRecordId(),date,amount,cat,subcat};const next=editing?manual.map(r=>r.id===editing?entry:r):[...manual,entry];persist(next);selectedMonth=date.slice(0,7);resetForm();showManual();$('manualStatus').textContent='このブラウザに保存しました。';$('entryAmount').focus();}catch(e){$('manualStatus').textContent='保存できませんでした。'+e.message;}});
+$('entryForm').addEventListener('submit',e=>{e.preventDefault();try{if(!enabled)throw new Error('保存を開始してください。');const date=$('entryDate').value;if(!dateValid(date))throw new Error('日付を確認してください。');const amount=integerAmount($('entryAmount').value),type=entryType(),cat=$('entryCat').value,subcat=$('entrySub').value.trim();if(/@|(?:[0-9０-９][\s()（）+＋−ー-]*){7,}/.test(subcat))throw new Error('中項目に連絡先や番号は入れず、用途だけを書いてください。');if(!entryCategories(type).includes(cat)||subcat.length>40)throw new Error('カテゴリを確認してください。');if(editing&&!manual.some(r=>r.id===editing))throw new Error('編集対象がなくなりました。');const entry={id:editing||makeRecordId(),date,amount,cat,subcat,type};const next=editing?manual.map(r=>r.id===editing?entry:r):[...manual,entry];persist(next);selectedMonth=date.slice(0,7);resetForm();showManual();$('manualStatus').textContent='このブラウザに保存しました。';$('entryAmount').focus();}catch(e){$('manualStatus').textContent='保存できませんでした。'+e.message;}});
 $('cancelEdit').onclick=resetForm;
 $('deleteAll').onclick=()=>{if(!confirm('このブラウザに保存した手入力をすべて削除します。元に戻せません。CSVの元ファイルは残ります。削除しますか？'))return;try{localStorage.removeItem(STORE);seen=null;manual=[];enabled=false;corrupt=false;clearCSV();resetForm();$('entries').replaceChildren();showManual();$('manualStatus').textContent='';alert('保存した手入力と、この画面の集計結果を削除しました。');}catch(e){alert('保存データを削除できませんでした。ブラウザの設定を確認してください。');}};
 $('fileInput').addEventListener('change',e=>loadFile(e.target.files?.[0]));$('again').onclick=()=>$('fileInput').click();$('clear').onclick=clearCSV;
