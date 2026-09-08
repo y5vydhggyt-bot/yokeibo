@@ -2,13 +2,13 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-I5rG2ESee/M8Dv8sD3Ilel+IZBGb/81tmiI7dRODMys='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-KAM7lJUPN8ENrlsLpew+saRJZoKnynvWWHn8TsBhwdw='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="余計簿">
-<meta name="theme-color" content="#f4efe4">
+<meta name="theme-color" content="#c9d9eb">
 <title>余計簿</title>
 <style>
 :root{--bg:#f4efe4;--card:#fffdf8;--ink:#1f201d;--muted:#79766e;--line:#ded5c5;--bar:#222320;--track:#ebe4d8;--good:#2f7155;--bad:#a84536}
@@ -50,6 +50,44 @@ h2{font-size:clamp(30px,9vw,47px);line-height:1.15;margin:8px 0 24px;letter-spac
 :root{--yellow:#ffdf58;--muted:#666259}main{max-width:1000px;padding-top:20px}h1{font-size:clamp(36px,9vw,58px);margin:12px 0}.sub{font-size:18px;margin-bottom:16px}h2,#manualPanel h2{font-size:24px;line-height:1.5;margin:0 0 12px;letter-spacing:0}.modebar{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.modebar button{font-size:15px;padding:12px 5px}.mode-notice{font-size:14px;margin:10px 2px}.card{margin:16px 0;padding:22px}.month-toolbar label{display:block;font-weight:800;margin-bottom:8px}.month-toolbar select{max-width:250px;font-size:22px;font-weight:800}.month-toolbar .note{margin:8px 0 0}.overview,.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.overview>.card,.chart-grid>.card{margin-top:0}.monthly-amount{display:block;font-size:clamp(32px,5vw,52px);font-weight:900;letter-spacing:-.04em;overflow-wrap:anywhere;line-height:1.3;margin:12px 0}.eyebrow{font-weight:800;margin:0}.comparison{font-weight:800;font-size:17px}.mini-metrics{display:flex;flex-wrap:wrap;gap:16px;border-top:1px solid var(--line);padding-top:18px;margin-top:18px}.mini-metrics>div{min-width:90px;flex:1}.mini-metrics span{display:block;font-size:14px;color:var(--muted)}.mini-metrics strong{display:block;font-size:18px;overflow-wrap:anywhere}.ojisan{background:var(--yellow);border-color:#dfbc31;box-shadow:3px 4px 0 #d9ba34;display:flex;flex-direction:column}.ojisan h2{font-size:18px}.ojisan q{font-size:clamp(22px,4.5vw,28px);line-height:1.7;overflow-wrap:anywhere;flex:1;margin:10px 0 18px}.ojisan .comment-reason{font-size:14px;line-height:1.7;margin:0 0 12px;color:#514518;font-weight:600}.ojisan button{align-self:flex-end;background:#24251e;color:white;padding:10px 18px}.comment-foot{font-size:12px;font-weight:500;color:#514518;line-height:1.6;margin-bottom:0}.features-card{margin-top:0}.features-card ul{padding-left:22px;line-height:1.8;margin-bottom:0}.features-card li{margin:7px 0}.donut-wrap{display:grid;place-items:center;margin:24px 0}.donut{width:min(100%,250px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:var(--track)}.donut-hole{width:65%;height:65%;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:8px}.donut-hole span{font-size:14px;color:var(--muted)}.donut-hole strong{font-size:clamp(16px,4vw,22px);overflow-wrap:anywhere;max-width:100%}.legend-row{display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:10px;align-items:center;margin:14px 0}.swatch{height:12px;width:12px;border-radius:3px}.legend-label{overflow-wrap:anywhere;font-size:15px;font-weight:700}.legend-value{text-align:right;font-size:14px;font-weight:800}.legend-value small{display:block;color:var(--muted);font-weight:500}.trend{max-height:490px;overflow-y:auto;margin-top:16px}.trend-row{width:100%;display:grid;grid-template-columns:64px minmax(30px,1fr) auto;align-items:center;gap:10px;background:transparent;border:1px solid transparent;border-radius:10px;padding:12px 6px;font-size:14px;text-align:left;margin:3px 0}.trend-row[aria-pressed=true]{background:#fff2bf;color:var(--ink);border-color:#c5a436}.trend-row .track{height:16px}.trend-row .bar{background:#aa833b}.trend-gap{font-size:13px;color:var(--muted);padding:9px 6px;border-bottom:1px dashed var(--line)}.growth-item{padding:14px 0;border-bottom:1px solid var(--line);overflow-wrap:anywhere}.growth-item:last-child{border:0}.growth-item strong{display:block;margin-bottom:6px}.note{font-weight:500}.entryhead{flex-wrap:wrap}.rank .cat{font-size:14px}.pick{min-height:90px;font-size:22px}#entryDate{display:block;width:100%;max-width:100%;min-width:0;box-sizing:border-box}#monthDetails{max-height:420px;overflow-y:auto}.foot{font-size:13px}.trend-row:focus-visible{outline-offset:-3px}.entryform>*{min-width:0}button:disabled{opacity:.5;cursor:default}@media(max-width:650px){.overview,.chart-grid{grid-template-columns:1fr;gap:0}.card{padding:20px 16px;border-radius:22px}.monthly-amount{font-size:44px}.ojisan q{font-size:25px}main{padding:16px 12px 48px}.entryform{grid-template-columns:1fr}.entryform .full{grid-column:1}.modebar button{font-size:14px}.sub{font-size:17px}.trend{max-height:400px}.monthly-amount{font-size:clamp(28px,10vw,44px)}}
 
 .ojisan button{font-size:16px;line-height:1.5}
+
+/* 3.1 blue refresh: no external fonts, images or services */
+:root{
+  --bg:#c9d9eb;
+  --card:#ffffff;
+  --ink:#203449;
+  --muted:#617184;
+  --line:#b8c9da;
+  --bar:#2f5f91;
+  --track:#e7eef6;
+  --good:#2f7c70;
+  --bad:#b45b56;
+  --yellow:#f5cf62;
+}
+body{background:var(--bg)}
+.card{background:#fff;border-color:var(--line);box-shadow:0 4px 16px #244e7812}
+.metric{background:#f5f9fd}
+.pick{border-color:#91aac3;background:#f8fbff}
+button{background:#dce7f2;color:var(--ink)}
+button.primary,button[aria-pressed="true"]{background:#244e78;color:#fff}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline-color:#2f5f91}
+input,select{background:#fff;border-color:var(--line)}
+.rank{border-bottom-color:#e3ebf3}
+.ojisan{background:var(--yellow);border-color:#d2a83b;box-shadow:3px 4px 0 #c99f31;color:#2b3440}
+.ojisan .comment-reason,.comment-foot{color:#5a4a18}
+.ojisan button{background:#244e78;color:#fff}
+.donut-hole{background:#fff}
+.trend{display:flex;align-items:flex-end;gap:12px;max-height:none;min-height:270px;overflow-x:auto;overflow-y:hidden;margin-top:10px;padding:16px 4px 10px;scroll-snap-type:x proximity}
+.trend-row{flex:0 0 88px;height:238px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:7px;background:transparent;border:1px solid transparent;border-radius:14px;padding:8px 5px;margin:0;text-align:center;scroll-snap-align:start}
+.trend-row[aria-pressed="true"]{background:#eef5fc;color:var(--ink);border-color:#7fa6cc}
+.trend-amount{font-size:12px;font-weight:850;white-space:nowrap;color:var(--ink);font-variant-numeric:tabular-nums}
+.trend-column{width:40px;height:158px;display:flex;align-items:flex-end;background:#edf3f8;border:1px solid #cedbe7;border-radius:12px 12px 8px 8px;overflow:hidden}
+.trend-bar{display:block;width:100%;min-height:4px;border-radius:10px 10px 5px 5px}
+.trend-month{font-size:12px;font-weight:850;white-space:nowrap;color:var(--muted)}
+.trend-row[aria-pressed="true"] .trend-month{color:#244e78}
+.trend-gap{flex:0 0 88px;height:220px;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;border:1px dashed #9fb4c9;border-radius:12px;color:var(--muted);font-size:12px;line-height:1.45}
+@media(max-width:650px){.trend{min-height:258px}.trend-row{flex-basis:82px;height:226px}.trend-column{height:148px;width:38px}.trend-gap{flex-basis:82px;height:208px}}
+
 </style>
 </head>
 <body>
@@ -83,7 +121,7 @@ h2{font-size:clamp(30px,9vw,47px);line-height:1.15;margin:8px 0 24px;letter-spac
     <section class="card month-toolbar"><label for="monthSelect">ふりかえる月</label><select id="monthSelect" aria-label="表示する月"></select><p class="note" id="period"></p><p class="note">月の区切りは１日〜末日。記録がない月は「不明」として扱います。</p></section>
     <div class="overview">
       <section class="card totals"><p class="eyebrow">月間支出</p><strong id="expense" class="monthly-amount"></strong><p id="comparison" class="comparison"></p><p id="comparisonNote" class="note"></p><div class="mini-metrics"><div><span>収入</span><strong id="income"></strong></div><div><span>差引</span><strong id="balance"></strong></div><div><span>集計件数</span><strong id="count"></strong></div></div></section>
-      <section class="card ojisan"><h2>今月のオジサン講評</h2><q id="comment" aria-live="polite"></q><p id="commentReason" class="comment-reason"></p><button id="moreComment" type="button">もう一言 ↻</button><p class="comment-foot">選んだ月の数字から、用意した一言を選んでいます。</p></section>
+      <section class="card ojisan"><h2>オジサンの余計な一言</h2><q id="comment" aria-live="polite"></q><p id="commentReason" class="comment-reason"></p><button id="moreComment" type="button">もう一言 ↻</button><p class="comment-foot">選んだ月の数字から、用意した一言を選んでいます。</p></section>
     </div>
     <section class="card features-card"><h2>今月、こんな感じ。</h2><ul id="features"></ul></section>
     <div class="chart-grid">
@@ -97,7 +135,7 @@ h2{font-size:clamp(30px,9vw,47px);line-height:1.15;margin:8px 0 24px;letter-spac
   </div>
   <section id="entriesPanel" class="card hidden"><h2>手入力の明細</h2><p class="note">選んだ月の明細を、新しい日付順に表示します。</p><div id="entries"></div><button id="deleteAll" class="danger">全部消す（保存した手入力も削除）</button></section>
   <details class="card"><summary>保存とプライバシー</summary><p class="note">手入力は、開始ボタンを押した後に日付・支出金額・大項目・中項目と管理用IDをこのサイトのブラウザ内保存領域（LocalStorage）に保存します。暗号化やアプリ独自のロックはありません。同じ端末・ブラウザを使う人は閲覧できます。</p><p class="note">CSVは一時的な読み込みだけです。「内容」「メモ」「保有金融機関」「ID」やファイル名は分析・表示・保存しません。CSV・手入力・デモは合算しません。架空の３か月のデモは保存しません。月の区切りは毎月１日〜末日です。前月比較は入力・読み込み済みの記録のみを比べ、記録がない月は不明として扱います。CSV画面を離れると集計結果を消します。手入力の「全部消す」は保存領域と表示を削除します。元のCSVやOSのバックアップは削除しません。メモリの物理的な完全消去は保証しません。</p><p class="note">有料API・アクセス解析・広告・外部フォント・CDNは使いません。GitHub Pagesで開く際はページ取得の通信があり、配信元に通常のアクセス記録が残る可能性があります。家計データを送る処理はありません。端末のバックアップ設定や、iCloud上のCSVを選ぶ際の通信はアプリの管理外です。オフラインでの再起動は保証しません。</p></details>
-  <p class="foot">月別分析版 3.0<br>OpenAI APIなし・有料APIなし・従量課金なし。<br>CSVは「計算対象」= 1、振替以外を集計。<br>CSVは保存なし。手入力は同意後にこのブラウザに保存。家計データの送信なし。</p>
+  <p class="foot">月別分析版 3.1<br>OpenAI APIなし・有料APIなし・従量課金なし。<br>CSVは「計算対象」= 1、振替以外を集計。<br>CSVは保存なし。手入力は同意後にこのブラウザに保存。家計データの送信なし。</p>
 </main>
 <script>
 'use strict';
@@ -157,7 +195,7 @@ function showManual(){ $('consentPanel').classList.toggle('hidden',enabled);$('m
 function restoreManual(){try{const state=readStore();seen=state.raw;manual=state.rows;enabled=state.active;corrupt=false;resetForm();$('manualStatus').textContent='';showManual();}catch(e){manual=[];enabled=false;corrupt=true;resetForm();showManual();$('consentPanel').classList.remove('hidden');$('entries').textContent='保存領域を読み出せません。ブラウザの設定、または保存データをご確認ください。記録を捨てる場合だけ「全部消す」を使ってください。';}}
 function switchMode(next){clearCSV();selectedMonth='';mode=next;$('demoMode').setAttribute('aria-pressed',String(next==='demo'));$('modeNotice').textContent=next==='demo'?'デモ・完全な架空の３か月。保存済みの手入力には触れません。':next==='manual'?'手入力の記録だけを分析します。CSVやデモは混ざりません。':'CSVは一時利用。別のモードに移ると読み込み結果を消します。';$('csvMode').setAttribute('aria-pressed',String(next==='csv'));$('manualMode').setAttribute('aria-pressed',String(next==='manual'));$('pickerCard').classList.toggle('hidden',next!=='csv');$('manualPanel').classList.toggle('hidden',next!=='manual');$('csvActions').classList.toggle('hidden',next!=='csv');$('entriesPanel').classList.add('hidden');$('status').textContent='CSVは一時利用。外部送信・自動保存はしません。';if(next==='manual')restoreManual();else{manual=[];enabled=false;resetForm();$('entries').replaceChildren();$('manualStatus').textContent='';if(next==='demo')render(makeDemo());}}
 function makeRecordId(){return Array.from(crypto.getRandomValues(new Uint8Array(16)),b=>b.toString(16).padStart(2,'0')).join('');}
-const PALETTE=['#ba7334','#477c77','#bd5365','#657ab2','#8b6cac','#788e41','#b55b3c','#397a98','#a58936','#71635b','#a5476c','#508655','#6b68a3','#937b4d','#456b7a','#846756'];
+const PALETTE=['#2f5f91','#5d93c6','#8cb7de','#4f9b92','#d2a64c'];
 function monthLabel(key){return `${key.slice(0,4)}年${Number(key.slice(5))}月`;}
 function prevMonth(key){const [y,m]=key.split('-').map(Number);return `${m===1?y-1:y}-${String(m===1?12:m-1).padStart(2,'0')}`;}
 function nextMonth(key){const [y,m]=key.split('-').map(Number);return `${m===12?y+1:y}-${String(m===12?1:m+1).padStart(2,'0')}`;}
@@ -167,63 +205,283 @@ function makeDemo(){const rows=[];const add=(m,d,a,cat,subcat)=>rows.push({date:
 function render(rows){activeRows=rows.map(r=>({date:r.date,n:r.n,cat:r.cat,subcat:r.subcat||''}));const months=[...new Set(activeRows.map(r=>r.date.slice(0,7)))].sort();if(!months.includes(selectedMonth))selectedMonth=months.at(-1)||today().slice(0,7);const select=$('monthSelect');select.replaceChildren();for(const key of months.length?months:[selectedMonth]){const o=document.createElement('option');o.value=key;o.textContent=monthLabel(key);select.append(o);}select.value=selectedMonth;drawMonth();}
 function drawMonth(){const a=monthAnalysis(activeRows,selectedMonth);$('period').textContent=`${mode==='manual'?'手入力':mode==='demo'?'デモ・架空データ':'CSV'} ／ ${monthLabel(selectedMonth)}・${a.rows.length}件`;$('expense').textContent=yen(a.expense);$('income').textContent=yen(a.income);$('balance').textContent=yen(a.income-a.expense);$('balance').className=a.income>=a.expense?'good':'bad';$('count').textContent=a.rows.length+'件';$('comparison').textContent=!a.previous?'比較できる前月データなし':a.delta===0?'前月の記録と同額':`前月の記録より ${a.delta>0?'+':'−'}${yen(Math.abs(a.delta))} ／ ${a.percent===null?'前月の支出０円・増減率なし':(a.percent>0?'+':'')+a.percent.toFixed(1)+'%'}`;$('comparisonNote').textContent='入力・読み込み済みの記録だけの比較です。月途中や未入力の分は含みません。';drawCategories(a);drawTrend();drawGrowth(a);drawFeatures(a);drawRanking(a);prepareComments(a);$('dashboard').classList.remove('hidden');$('importDetails').classList.toggle('hidden',mode==='manual');if(mode!=='manual')drawImportedDetails(a);else $('monthDetails').replaceChildren();$('csvActions').classList.toggle('hidden',mode!=='csv');}
 function drawCategories(a){const sorted=Object.entries(a.cats).sort((x,y)=>y[1]-x[1]);let offset=0;const segments=[];const legend=$('donutLegend');legend.replaceChildren();sorted.forEach(([cat,amount],i)=>{const percent=amount/a.expense*100,color=PALETTE[i%PALETTE.length];segments.push(`${color} ${offset}% ${offset+percent}%`);offset+=percent;const row=document.createElement('div');row.className='legend-row';const swatch=document.createElement('span');swatch.className='swatch';swatch.style.background=color;swatch.setAttribute('aria-hidden','true');const title=document.createElement('span');title.className='legend-label';title.textContent=cat;const val=document.createElement('span');val.className='legend-value';val.textContent=yen(amount);const pct=document.createElement('small');pct.textContent=percent.toFixed(1)+'%';val.append(pct);row.append(swatch,title,val);legend.append(row);});$('donut').style.background=segments.length?`conic-gradient(${segments.join(',')})`:'var(--track)';$('donut').setAttribute('aria-label',segments.length?'カテゴリ別支出。'+sorted.map(([c,n])=>`${c} ${(n/a.expense*100).toFixed(1)}%`).join('、'):'この月の支出はありません');$('donutTotal').textContent=yen(a.expense);if(!sorted.length)legend.textContent='この月の支出はありません。';const max=sorted[0]?.[1]||1;$('bars').innerHTML=sorted.map(([cat,n])=>`<div class="barrow"><div>${escapeHTML(cat)}</div><div class="track"><div class="bar" style="width:${n/max*100}%"></div></div><div class="amt">${yen(n)}</div></div>`).join('');}
-function drawTrend(){const totals=new Map();for(const r of activeRows){const key=r.date.slice(0,7);totals.set(key,(totals.get(key)||0)+Math.max(0,-r.n));}const months=[...totals.keys()].sort(),max=Math.max(1,...totals.values()),root=$('trend');root.replaceChildren();if(!months.length){root.textContent='明細を追加すると、月ごとの支出が見られます。';return;}let last=null;for(const key of months){if(last&&nextMonth(last)!==key){const gap=document.createElement('div');gap.className='trend-gap';gap.textContent=`${monthLabel(nextMonth(last))}${nextMonth(last)===prevMonth(key)?'':'〜'+monthLabel(prevMonth(key))}：記録なし`;root.append(gap);}last=key;const button=document.createElement('button');button.type='button';button.className='trend-row';button.setAttribute('aria-pressed',String(key===selectedMonth));button.setAttribute('aria-label',`${monthLabel(key)}、支出${yen(totals.get(key))}を表示`);const title=document.createElement('span');title.textContent=key;const track=document.createElement('span');track.className='track';track.setAttribute('aria-hidden','true');const bar=document.createElement('span');bar.className='bar';bar.style.display='block';bar.style.width=totals.get(key)/max*100+'%';track.append(bar);const amount=document.createElement('span');amount.textContent=yen(totals.get(key));button.append(title,track,amount);button.onclick=()=>{selectedMonth=key;$('monthSelect').value=key;drawMonth();if(mode==='manual')renderEntries();};root.append(button);}}
+function drawTrend(){
+  const totals=new Map();
+  for(const r of activeRows){const key=r.date.slice(0,7);totals.set(key,(totals.get(key)||0)+Math.max(0,-r.n));}
+  const months=[...totals.keys()].sort(),max=Math.max(1,...totals.values()),root=$('trend');
+  const trendColors=['#5d93c6','#4f9b92','#d2a64c'];
+  root.replaceChildren();
+  if(!months.length){root.textContent='明細を追加すると、月ごとの支出が見られます。';return;}
+  let last=null;
+  months.forEach((key,i)=>{
+    if(last&&nextMonth(last)!==key){
+      const gap=document.createElement('div');gap.className='trend-gap';
+      gap.textContent=`${monthLabel(nextMonth(last))}${nextMonth(last)===prevMonth(key)?'':'〜'+monthLabel(prevMonth(key))}：記録なし`;
+      root.append(gap);
+    }
+    last=key;
+    const button=document.createElement('button');button.type='button';button.className='trend-row';
+    button.setAttribute('aria-pressed',String(key===selectedMonth));
+    button.setAttribute('aria-label',`${monthLabel(key)}、支出${yen(totals.get(key))}を表示`);
+    const amount=document.createElement('span');amount.className='trend-amount';amount.textContent=yen(totals.get(key));
+    const column=document.createElement('span');column.className='trend-column';column.setAttribute('aria-hidden','true');
+    const bar=document.createElement('span');bar.className='trend-bar';
+    bar.style.height=Math.max(4,totals.get(key)/max*100)+'%';
+    bar.style.background=key===selectedMonth?'#244e78':trendColors[i%trendColors.length];
+    column.append(bar);
+    const title=document.createElement('span');title.className='trend-month';title.textContent=key;
+    button.append(amount,column,title);
+    button.onclick=()=>{selectedMonth=key;$('monthSelect').value=key;drawMonth();if(mode==='manual')renderEntries();};
+    root.append(button);
+  });
+}
 function drawGrowth(a){const root=$('growth');root.replaceChildren();if(!a.previous){root.textContent='比較できる前月データなし';return;}if(!a.growth.length){root.textContent='記録上、条件に当てはまるカテゴリはありません。';return;}for(const g of a.growth){const item=document.createElement('div');item.className='growth-item';const title=document.createElement('strong');title.textContent=g.cat+' ＋'+yen(g.delta);const detail=document.createElement('span');detail.className='note';detail.textContent=`${yen(g.before)} → ${yen(g.amount)} ／ ${g.percent===null?'前月の記録０円・率なし':'+'+g.percent.toFixed(1)+'%'}`;item.append(title,detail);root.append(item);}}
 function drawFeatures(a){const top=Object.entries(a.cats).sort((x,y)=>y[1]-x[1])[0],items=[];if(top)items.push(`${top[0]}が最多。${yen(top[1])}、支出の${(top[1]/a.expense*100).toFixed(1)}%。`);if(a.growth.length)items.push(`${a.growth[0].cat}が前月の記録より${yen(a.growth[0].delta)}増加。`);if(a.repeated)items.push(`同じ大項目・中項目の支出が７日間に${a.repeated.count}件。同じ店とは限りません。`);if(a.small.length>=3)items.push(`1,000円以下の支出が${a.small.length}件、合計${yen(a.small.reduce((s,r)=>s+r.amount,0))}。`);if(a.big.length)items.push(`10,000円以上の支出が${a.big.length}件。`);if(!items.length)items.push('この月の記録に支出はありません。');if(items.length<2)items.push(`記録済みの支出は${a.spends.length}件。未入力の支出は含みません。`);$('features').replaceChildren();for(const text of items.slice(0,4)){const li=document.createElement('li');li.textContent=text;$('features').append(li);}}
 function drawRanking(a){$('ranking').innerHTML=a.spends.slice(0,5).map((r,i)=>`<div class="rank"><div class="n">${i+1}</div><div class="name">${escapeHTML(r.subcat||r.cat)}<span class="cat">${escapeHTML(r.cat)}・${escapeHTML(r.date)}</span></div><div class="money">${yen(r.amount)}</div></div>`).join('')||'<p class="empty">この月の支出なし。</p>';}
 function drawImportedDetails(a){const root=$('monthDetails');root.replaceChildren();const ordered=[...a.rows].sort((x,y)=>y.date.localeCompare(x.date));let shown=0;function appendNext(){const end=Math.min(shown+100,ordered.length);for(const r of ordered.slice(shown,end)){const entry=document.createElement('div');entry.className='entry';entry.textContent=`${r.date}　${r.cat}${r.subcat?' / '+r.subcat:''}　${r.n<0?'支出':'収入'} ${yen(Math.abs(r.n))}`;root.append(entry);}shown=end;if(shown<ordered.length){const more=document.createElement('button');more.textContent='次の100件を表示（残り'+(ordered.length-shown)+'件）';more.onclick=()=>{more.remove();appendNext();};root.append(more);}}appendNext();if(!a.rows.length)root.textContent='この月の明細はありません。';}
-function commentCandidates(a){const options=[];const add=(rule,reason,texts)=>texts.forEach((text,i)=>options.push({id:rule+'-'+i,text,reason}));const top=Object.entries(a.cats).sort((x,y)=>y[1]-x[1])[0];const byWord=regex=>a.spends.filter(r=>regex.test(r.cat+' '+r.subcat));
-if(!a.spends.length){add('empty','この月の記録に支出なし。未入力かどうかは判断しません。',[
-'まだ数字が来てねぇな。オジサンまで架空の説教を始めるわけにはいかん。','支出欄が空だな。「使ってない」と「まだ入れてない」は別だからな😏','出番待ちだ。数字を置いてけ、余計な一言はこっちで用意してある。','この月は記録上、支出なし。空欄相手に勝ち誇るほどオジサンも暇じゃない。']);return options;}
-add('general',`${monthLabel(a.key)}の記録済み支出：${yen(a.expense)}・${a.spends.length}件。`,[
-`今月の記録、${yen(a.expense)}。合計だけ眺めて帰るなよ。内訳も席に着かせろ。`,
-'「必要だった」で全部まとめると、家計簿が議事録一行で終わるぞ。項目ごとに聞いていこうか😏',
-'使った金額と、満足したかは別の話だ。数字だけ出してオジサンに丸投げすんな。',
-'並べると見えるな。気に入った出費も、首をかしげる出費も、同じ顔で載ってやがる。',
-'記録したところで買い物が返品されるわけじゃない。次に選ぶときの材料にはなるぞ。',
-'明細を開いたな。よし、今日は財布の中より買った後の感想を取り調べる。']);
-if(top&&top[1]/a.expense>=.4)add('dominant',`${top[0]}が支出の${(top[1]/a.expense*100).toFixed(1)}%。`,[
-`今月の「${top[0]}」、${yen(top[1])}で主演気取りだな。他の項目の出番まで取ってんぞ。`,
-`「${top[0]}」が合計の真ん中に座ってる。そこ、指定席にした覚えあるか😏`,
-`今月は「${top[0]}」の声がでかい。金額だけじゃ事情は分からん、内訳を連れてこい。`,
-`「${top[0]}」がずいぶん前に出てきたな。家計簿でソロ公演を始めるんじゃねぇ。`]);
-if(a.small.length>=5)add('small',`1,000円以下が${a.small.length}件、合計${yen(a.small.reduce((s,r)=>s+r.amount,0))}。`,[
-'小さな支出も、集まると立派な一団だな。一個ずつは控えめな顔をしてるのに。','一個一個は安い顔して、集団で殴ってきてるぞ。合計のところで点呼取れ。','ちびちび買った方が結託してる。合計の額、見せてもらおうか😏','「このくらい」が何人も来たな。一人ずつ通した結果がこの団体客だ。','小銭組、いつの間に隊列を組んだ。安かった記憶だけで解散させるなよ。','一件の値札は小さいのに、集合写真にすると幅を取るな。少額組、前へ。']);
-if(a.big.length)add('large',`10,000円以上が${a.big.length}件。最大${yen(a.spends[0].amount)}。`,[
-`一番でかいのは${yen(a.spends[0].amount)}。堂々と座ってるな。必要な出費なら、用途も堂々と言ってやれ。`,
-'大物が合計の真ん中でふんぞり返ってる。毎月の支出と、一度きりの出費は分けて考えろよ。',
-'でかい支出がいるな。値段だけで悪役にするほど雑じゃねぇ。買ってどうだったかも聞かせろ。',
-'高額組を発見。安けりゃ正義って話でもないが、見なかったことにはさせんぞ😏']);
-if(a.repeated)add('repeat',`同じ大項目・中項目の支出が７日間に${a.repeated.count}件。同じ店とは限りません。`,[
-'同じ分類が短い間に何度も顔を出してる。お前ら、さっきも会ったよな。','明細に常連がいるな。店までは分からんが、同じ用途が席を温めてるぞ。','この分類、短期間に再登場しすぎだろ。家計簿のレギュラーでも狙ってんのか😏','同じ用途の支出が続いてる。一件ずつじゃなく、ひとかたまりにして眺めてみろ。']);
-if(a.previous&&a.delta>0)add('increase',`記録上の前月差：＋${yen(a.delta)}。記録期間・入力漏れに注意。`,[
-'前月の記録より合計が出っ張ったな。増えた項目、順番に前へ出ろ。','合計が前月より背伸びしてる。未入力の差なのか、買った物の差なのか、そこは分けろよ。','記録上は前月より増えたな。「なんとなく」で済ませるには、内訳がちゃんと並んでるぞ。','前月より数字が張り切ってる。増えた理由も同じくらい張り切って確認しとけ😏']);
-if(a.previous&&a.delta<0)add('decrease',`記録上の前月差：−${yen(-a.delta)}。月途中・未入力分は含みません。`,[
-'記録上は先月より減ってるじゃねぇか。入力漏れじゃなければ、その調子だな😏','前月の記録より小さくなってる。まだ月途中なら、祝勝会の予約は早いぞ。','合計が前月より控えめだ。記録の揃い具合も確認してから、したり顔しとけ。','記録分では前月より減ったな。「浮いたから使う」で即座に戻す芸は披露しなくていい。']);
-if(a.previous&&a.delta===0)add('same','前月の記録と支出合計が同額。',[
-'前月と同額か。合計は同じ顔でも、中身まで同じとは限らんぞ。','合計が前月とぴったり並んだな。内訳を入れ替えて知らん顔してないか見てみよう。','金額は前月と引き分け。満足度の勝負はお前の採点だ。','前月と同じ数字。家計簿がコピー機になったわけじゃない、内訳も見ろよ😏']);
-if(a.growth.length){const g=a.growth[0];add('growth',`${g.cat}が前月の記録より${yen(g.delta)}増加。`,[
-`「${g.cat}」、前月より存在感が増したな。急に前の席へ来るんじゃねぇ。`,
-`「${g.cat}」が増員してる。合計に紛れる前に、その増えた分を見せろ😏`,
-`前月より伸びた「${g.cat}」。何を買ったか、満足したか、二つまとめて振り返っとけ。`,
-`「${g.cat}」の数字が一段大きくなった。事情は知らんから、まず増えた欄だけ点呼だ。`]);}
-const dining=byWord(/外食|ランチ|ディナー|レストラン/);if(dining.length>=2)add('dining',`外食を表す中項目などが${dining.length}件、${yen(dining.reduce((s,r)=>s+r.amount,0))}。`,[
-'今月、外食だけ妙に元気だな。胃袋の予定表、ずいぶん充実してるじゃねぇか😏','外食欄が賑やかだな。おいしかった店と、なんとなく入った店は分けて覚えとけ。','外食が何度も登場してる。食べた記憶だけ先に帰して、支払いを置いてくなよ。','外食組が席を埋めてるな。満足したなら結構。合計にもちゃんと目を合わせろ。']);
-const cafe=byWord(/カフェ|コーヒー|喫茶/);if(cafe.length>=2)add('cafe',`カフェ等の記録${cafe.length}件、${yen(cafe.reduce((s,r)=>s+r.amount,0))}。`,[
-'一杯ずつは落ち着いた顔して、カフェ代の合計はなかなか目が覚めるな。','カフェ欄が賑やかだ。休憩の回数と支払いの回数、仲良く増えてるぞ。','コーヒーは飲み終わっても明細には残る。余韻が長いのはそっちだったか😏','カフェ組、集合。一杯の値札じゃなく、今月の伝票で話そうか。']);
-const sweet=byWord(/お菓子|菓子|スイーツ|ケーキ|アイス/);if(sweet.length>=2)add('sweets',`お菓子等の記録${sweet.length}件、${yen(sweet.reduce((s,r)=>s+r.amount,0))}。`,[
-'甘い物の明細、ずいぶん集まったな。合計まで甘く見てもらえると思うなよ😏','お菓子組が増えてる。小さなご褒美も、集合すると表彰式だな。','スイーツ欄が賑やかだ。うまかったなら結構、値段の記憶も一緒に残しとけ。','甘い物は別腹でも、支出は同じ合計に入るんだな。律儀な話だ。']);
-const daily=byWord(/日用品|消耗品|雑貨/);if(daily.length>=3)add('daily',`日用品等の記録${daily.length}件。`,[
-'日用品が何度も顔を出してる。補充と「ついで」の境目、棚と一緒に見直すか。','生活に必要な顔して並んでるな。必要な物まで一律に削れとは言わん、在庫は数えとけ。','日用品欄が賑やかだ。買った安心感と、家にある個数は別だからな😏','消耗品組がずらり。使い切る予定も連れてきてるだろうな。']);
-if(byWord(/旅行|宿泊|旅費/).length)add('travel','旅行・宿泊などの分類に支出あり。',[
-'旅費の欄が堂々と座ってる。思い出まで安売りしろとは言ってないぞ。','旅行の数字が顔を出したな。日常分に紛れ込ませず、ひと旅ぶんとして眺めろ。','旅の支払いがいる。楽しかったかは金額じゃ分からん、そこはお前の出番だ😏','旅費、存在感あるな。使ってよかった分まで反省会に招待しなくていい。']);
-if(byWord(/健康|医療|病院|通院/).length)add('health','健康・医療に分類された支出あり。',[
-'医療の欄があるな。金額だけ見て削れなんて、オジサンもそこまで雑じゃねぇ。','健康のための支出まで勢いで削るなよ。今回のツッコミはひとまず隣の欄へ行く。','医療費が顔を出してる。数字の大小だけで必要かどうか決める席じゃないぞ、ここは。','通院や健康の記録は、必要な分を把握しとけ。何でも安くしろとは言ってないからな。']);
-if(byWord(/趣味|娯楽|ゲーム|推し/).length>=2)add('hobby','趣味・娯楽などの分類に複数の支出あり。',[
-'楽しみの欄が働いてるな。満足度まで記録できりゃ、値札だけの反省会にならずに済む。','趣味の出費が何度も出てくる。楽しんだか、積んだだけか。そこは自分に聞いとけ😏','娯楽組が元気だな。「見るだけ」のつもりだった分があるなら、そこだけ挙手。','趣味には予算も席を用意しとけ。楽しみだけ先に満席にするなよ。']);
-if(a.spends.length===1)add('one','選んだ月の支出記録は１件。',[
-'まだ一件だな。これだけで生活全部を見抜いた顔はしねぇよ。','一件目からオジサン呼んだのか。記録が増えれば、ツッコミの相手も増えるぞ。','今月は今のところ一件。家計簿の開会式にしては、ずいぶん早く講評を求めるな😏','一件、受け取った。続きがあるなら置いてけ。結論を急ぐほど材料は揃ってねぇ。']);
-return options;}
+function commentCandidates(a){
+  const options=[];
+  const add=(rule,reason,texts)=>texts.forEach((text,i)=>options.push({id:rule+'-'+i,text,reason}));
+  const top=Object.entries(a.cats).sort((x,y)=>y[1]-x[1])[0];
+  const byWord=regex=>a.spends.filter(r=>regex.test(r.cat+' '+r.subcat));
+  if(!a.spends.length){
+    add('empty','この月の記録に支出なし。未入力かどうかは判断しません。',[
+      'まだ数字が来てねぇな。オジサンまで架空の説教を始めるわけにはいかん。',
+      '支出欄が空だな。「使ってない」と「まだ入れてない」は別だからな😏',
+      '出番待ちだ。数字を置いてけ、余計な一言はこっちで用意してある。',
+      'この月は記録上、支出なし。空欄相手に勝ち誇るほどオジサンも暇じゃない。',
+      '真っ白だな。節約の天才か入力前か、俺にはまだ判決できん。',
+      '材料ゼロで毒舌を要求するな。さすがにそれは当たり屋だ。'
+    ]);
+    return options;
+  }
+  add('general',`${monthLabel(a.key)}の記録済み支出：${yen(a.expense)}・${a.spends.length}件。`,[
+    `今月の記録、${yen(a.expense)}。合計だけ眺めて帰るなよ。内訳も席に着かせろ。`,
+    '「必要だった」で全部まとめると、家計簿が議事録一行で終わるぞ。項目ごとに聞いていこうか😏',
+    '使った金額と、満足したかは別の話だ。数字だけ出してオジサンに丸投げすんな。',
+    '並べると見えるな。気に入った出費も、首をかしげる出費も、同じ顔で載ってやがる。',
+    '記録したところで買い物が返品されるわけじゃない。次に選ぶときの材料にはなるぞ。',
+    '明細を開いたな。よし、今日は財布の中より買った後の感想を取り調べる。',
+    '家計簿は反省文じゃねぇ。何に使ったか見えりゃ、まず仕事はしてる。',
+    '数字は黙って並んでるのに、だいたい本人より口が軽いんだよな。',
+    '今月もちゃんと金が動いたな。財布だけ無人島ってわけにはいかん。',
+    '使った理由が全部違うのに、最後は一個の合計にされる。家計って雑な編集者だな。',
+    '明細は証拠品じゃない。だが「何に使ったっけ」はだいたいここで捕まる。',
+    '記録してる時点で、見て見ぬふりより一段マシだ。褒めすぎると調子乗るからここまで。'
+  ]);
+  if(top&&top[1]/a.expense>=.4)add('dominant',`${top[0]}が支出の${(top[1]/a.expense*100).toFixed(1)}%。`,[
+    `今月の「${top[0]}」、${yen(top[1])}で主演気取りだな。他の項目の出番まで取ってんぞ。`,
+    `「${top[0]}」が合計の真ん中に座ってる。そこ、指定席にした覚えあるか😏`,
+    `今月は「${top[0]}」の声がでかい。金額だけじゃ事情は分からん、内訳を連れてこい。`,
+    `「${top[0]}」がずいぶん前に出てきたな。家計簿でソロ公演を始めるんじゃねぇ。`,
+    `今月のセンターは「${top[0]}」。選挙した覚えはないが、票は金額で集めたらしい。`,
+    `「${top[0]}」、存在感だけならもう挨拶回りいらんな。`,
+    `合計を見る前から「${top[0]}」がこっち見てる。隠れる気ゼロだな。`,
+    `今月は「${top[0]}」が幅を利かせてる。事情があるなら堂々としてろ、なけりゃ少し座れ。`
+  ]);
+  if(a.small.length>=5)add('small',`1,000円以下が${a.small.length}件、合計${yen(a.small.reduce((s,r)=>s+r.amount,0))}。`,[
+    '小さな支出も、集まると立派な一団だな。一個ずつは控えめな顔をしてるのに。',
+    '一個一個は安い顔して、集団で殴ってきてるぞ。合計のところで点呼取れ。',
+    'ちびちび買った方が結託してる。合計の額、見せてもらおうか😏',
+    '「このくらい」が何人も来たな。一人ずつ通した結果がこの団体客だ。',
+    '小銭組、いつの間に隊列を組んだ。安かった記憶だけで解散させるなよ。',
+    '一件の値札は小さいのに、集合写真にすると幅を取るな。少額組、前へ。',
+    '小さい顔して並んでるが、合計はちゃんと騒がしいな。',
+    '「まあ千円以下だし」が会議を開いた結果がこれだ。',
+    '端数みたいな顔してるが、合計ではちゃんと札の仕事してるぞ。',
+    '少額支出、数で押してきたな。物量戦はやめろ。'
+  ]);
+  if(a.big.length)add('large',`10,000円以上が${a.big.length}件。最大${yen(a.spends[0].amount)}。`,[
+    `一番でかいのは${yen(a.spends[0].amount)}。堂々と座ってるな。必要な出費なら、用途も堂々と言ってやれ。`,
+    '大物が合計の真ん中でふんぞり返ってる。毎月の支出と、一度きりの出費は分けて考えろよ。',
+    'でかい支出がいるな。値段だけで悪役にするほど雑じゃねぇ。買ってどうだったかも聞かせろ。',
+    '高額組を発見。安けりゃ正義って話でもないが、見なかったことにはさせんぞ😏',
+    '一件で空気変えるタイプが来たな。こういうのは月平均に混ぜると顔が濃い。',
+    '大物一名、ご入場。財布のドアずいぶん広く開けたな。',
+    '少数精鋭で削ってくるな。件数じゃなく単価で殴るタイプだ。',
+    '今月の記憶を一件で持っていきそうな金額だな。満足度まで持っていったか？'
+  ]);
+  if(a.repeated)add('repeat',`同じ大項目・中項目の支出が７日間に${a.repeated.count}件。同じ店とは限りません。`,[
+    '同じ分類が短い間に何度も顔を出してる。お前ら、さっきも会ったよな。',
+    '明細に常連がいるな。店までは分からんが、同じ用途が席を温めてるぞ。',
+    'この分類、短期間に再登場しすぎだろ。家計簿のレギュラーでも狙ってんのか😏',
+    '同じ用途の支出が続いてる。一件ずつじゃなく、ひとかたまりにして眺めてみろ。',
+    'またお前か。短期間で顔なじみになりすぎだ。',
+    '同じ分類が連勤してる。シフト誰が組んだ。',
+    '「たまたま」が何回も来ると、そろそろ習慣って名札を付けたくなるな。',
+    '再登場が早い。家計簿でアンコール要求してないぞ。'
+  ]);
+  if(a.previous&&a.delta>0)add('increase',`記録上の前月差：＋${yen(a.delta)}。記録期間・入力漏れに注意。`,[
+    '前月の記録より合計が出っ張ったな。増えた項目、順番に前へ出ろ。',
+    '合計が前月より背伸びしてる。未入力の差なのか、買った物の差なのか、そこは分けろよ。',
+    '記録上は前月より増えたな。「なんとなく」で済ませるには、内訳がちゃんと並んでるぞ。',
+    '前月より数字が張り切ってる。増えた理由も同じくらい張り切って確認しとけ😏',
+    '先月より元気だな。財布はたぶん元気じゃない。',
+    '増えたな。数字が自己主張を覚えたらしい。',
+    '前月比較って、言い訳にあまり優しくないんだよな。',
+    '今月、控えめな顔してちゃんと増えてる。そういう静かな犯行が一番見落とす。'
+  ]);
+  if(a.previous&&a.delta<0)add('decrease',`記録上の前月差：−${yen(-a.delta)}。月途中・未入力分は含みません。`,[
+    '記録上は先月より減ってるじゃねぇか。入力漏れじゃなければ、その調子だな😏',
+    '前月の記録より小さくなってる。まだ月途中なら、祝勝会の予約は早いぞ。',
+    '合計が前月より控えめだ。記録の揃い具合も確認してから、したり顔しとけ。',
+    '記録分では前月より減ったな。「浮いたから使う」で即座に戻す芸は披露しなくていい。',
+    '数字が少し静かになったな。俺の出番まで削るなよ。',
+    '先月より軽い。無理してないなら、これは普通にいい。悔しいが。',
+    '減ってるな。だからって余った枠を今日中に埋める必要はないぞ。',
+    '今月は財布がちょっと休めたらしい。お前も一緒に休め。'
+  ]);
+  if(a.previous&&a.delta===0)add('same','前月の記録と支出合計が同額。',[
+    '前月と同額か。合計は同じ顔でも、中身まで同じとは限らんぞ。',
+    '合計が前月とぴったり並んだな。内訳を入れ替えて知らん顔してないか見てみよう。',
+    '金額は前月と引き分け。満足度の勝負はお前の採点だ。',
+    '前月と同じ数字。家計簿がコピー機になったわけじゃない、内訳も見ろよ😏',
+    'ぴったり同額。偶然にしては妙に行儀がいいな。',
+    '合計は据え置き。中身が席替えしてないかだけ見とけ。'
+  ]);
+  if(a.growth.length){const g=a.growth[0];add('growth',`${g.cat}が前月の記録より${yen(g.delta)}増加。`,[
+    `「${g.cat}」、前月より存在感が増したな。急に前の席へ来るんじゃねぇ。`,
+    `「${g.cat}」が増員してる。合計に紛れる前に、その増えた分を見せろ😏`,
+    `前月より伸びた「${g.cat}」。何を買ったか、満足したか、二つまとめて振り返っとけ。`,
+    `「${g.cat}」の数字が一段大きくなった。事情は知らんから、まず増えた欄だけ点呼だ。`,
+    `「${g.cat}」だけ前月より景気いいな。スポンサーでも付いたか。`,
+    `前月より「${g.cat}」が前のめりだ。落ち着け、家計簿は短距離走じゃない。`,
+    `「${g.cat}」、今月やたら声が通るな。増えた理由までマイク持ってこい。`,
+    `伸びたのは「${g.cat}」。成長って言葉、家計では何でも褒められるわけじゃないぞ。`
+  ]);}
+  const dining=byWord(/外食|ランチ|ディナー|レストラン/);
+  if(dining.length>=2)add('dining',`外食を表す中項目などが${dining.length}件、${yen(dining.reduce((s,r)=>s+r.amount,0))}。`,[
+    '今月、外食だけ妙に元気だな。胃袋の予定表、ずいぶん充実してるじゃねぇか😏',
+    '外食欄が賑やかだな。おいしかった店と、なんとなく入った店は分けて覚えとけ。',
+    '外食が何度も登場してる。食べた記憶だけ先に帰して、支払いを置いてくなよ。',
+    '外食組が席を埋めてるな。満足したなら結構。合計にもちゃんと目を合わせろ。',
+    '外食、今月の胃袋が外交的すぎるな。',
+    '「今日は作りたくない」の積み重ね、明細では妙に正直だ。',
+    '外で食うとうまい。請求だけ家まで付いてくる。律儀だな。',
+    '外食欄、予約してないのに何度も来るな。うまかったなら半分許す。'
+  ]);
+  const cafe=byWord(/カフェ|コーヒー|喫茶/);
+  if(cafe.length>=2)add('cafe',`カフェ等の記録${cafe.length}件、${yen(cafe.reduce((s,r)=>s+r.amount,0))}。`,[
+    '一杯ずつは落ち着いた顔して、カフェ代の合計はなかなか目が覚めるな。',
+    'カフェ欄が賑やかだ。休憩の回数と支払いの回数、仲良く増えてるぞ。',
+    'コーヒーは飲み終わっても明細には残る。余韻が長いのはそっちだったか😏',
+    'カフェ組、集合。一杯の値札じゃなく、今月の伝票で話そうか。',
+    '休憩は必要だ。毎回レジまで同行させる必要があるかは別だな。',
+    'カフェ代、香りは消えるのに数字だけ保存性が高い。',
+    '一杯は静かだが、回数が急に饒舌だな。',
+    'コーヒーで目は覚める。合計見てもたぶん目は覚める。'
+  ]);
+  const sweet=byWord(/お菓子|菓子|スイーツ|ケーキ|アイス/);
+  if(sweet.length>=2)add('sweets',`お菓子等の記録${sweet.length}件、${yen(sweet.reduce((s,r)=>s+r.amount,0))}。`,[
+    '甘い物の明細、ずいぶん集まったな。合計まで甘く見てもらえると思うなよ😏',
+    'お菓子組が増えてる。小さなご褒美も、集合すると表彰式だな。',
+    'スイーツ欄が賑やかだ。うまかったなら結構、値段の記憶も一緒に残しとけ。',
+    '甘い物は別腹でも、支出は同じ合計に入るんだな。律儀な話だ。',
+    'ご褒美が定期開催されてるな。何を達成したか議事録出してみろ。',
+    '甘党の気配が明細から漏れてる。隠す気ないだろ。',
+    'ケーキは消えた。金額は残った。世の中うまくできてないな。',
+    '別腹に会計機能は付いてないらしい。残念だったな😏'
+  ]);
+  const food=byWord(/食費|食料品|スーパー|食品/);
+  if(food.length>=4)add('food',`食費・食料品などの記録が${food.length}件。`,[
+    '食費は生きる経費だ。だからってレシート全部に免罪符が付くわけじゃないぞ。',
+    '食べ物の明細は多くて当然。問題は「何食ったっけ」が多い方だ。',
+    '食費組、人数多いな。腹は毎日営業してるから仕方ないが、棚の在庫は見とけ。',
+    'スーパーの袋は軽くても、回数は家計簿でちゃんと重くなる。',
+    '食費が働いてるな。必要分と「ついでに」の境界線、レジ前で消えてないか。',
+    '腹は一日三回主張する。財布まで三回主張させるかは作戦次第だ。',
+    '食費は削れば勝ちじゃない。無駄が混ざってないかだけ見りゃいい。',
+    '食べるのは必要。買ったの忘れるのは余計。そこだけ分けろ。'
+  ]);
+  const daily=byWord(/日用品|消耗品|雑貨/);
+  if(daily.length>=3)add('daily',`日用品等の記録${daily.length}件。`,[
+    '日用品が何度も顔を出してる。補充と「ついで」の境目、棚と一緒に見直すか。',
+    '生活に必要な顔して並んでるな。必要な物まで一律に削れとは言わん、在庫は数えとけ。',
+    '日用品欄が賑やかだ。買った安心感と、家にある個数は別だからな😏',
+    '消耗品組がずらり。使い切る予定も連れてきてるだろうな。',
+    '「切れそう」で買った物、家に三個あると急に顔が悪くなるからな。',
+    '日用品は地味だが、重なると妙に場所も金も取る。棚と家計簿の二重取りだ。'
+  ]);
+  if(byWord(/旅行|宿泊|旅費/).length)add('travel','旅行・宿泊などの分類に支出あり。',[
+    '旅費の欄が堂々と座ってる。思い出まで安売りしろとは言ってないぞ。',
+    '旅行の数字が顔を出したな。日常分に紛れ込ませず、ひと旅ぶんとして眺めろ。',
+    '旅の支払いがいる。楽しかったかは金額じゃ分からん、そこはお前の出番だ😏',
+    '旅費、存在感あるな。使ってよかった分まで反省会に招待しなくていい。',
+    '旅行代は高く見えるが、思い出を一泊何円で割るな。急に世知辛い。',
+    '旅費が来たな。帰ってきた後まで財布だけ旅行中にするなよ。'
+  ]);
+  if(byWord(/健康|医療|病院|通院/).length)add('health','健康・医療に分類された支出あり。',[
+    '医療の欄があるな。金額だけ見て削れなんて、オジサンもそこまで雑じゃねぇ。',
+    '健康のための支出まで勢いで削るなよ。今回のツッコミはひとまず隣の欄へ行く。',
+    '医療費が顔を出してる。数字の大小だけで必要かどうか決める席じゃないぞ、ここは。',
+    '通院や健康の記録は、必要な分を把握しとけ。何でも安くしろとは言ってないからな。',
+    'ここは節約選手権の会場じゃない。必要だった分は必要だったで置いとけ。',
+    '体のメンテ代まで毒舌で削ったら、俺がただの嫌なオジサンになる。そこは触らん。'
+  ]);
+  if(byWord(/趣味|娯楽|ゲーム|推し/).length>=2)add('hobby','趣味・娯楽などの分類に複数の支出あり。',[
+    '楽しみの欄が働いてるな。満足度まで記録できりゃ、値札だけの反省会にならずに済む。',
+    '趣味の出費が何度も出てくる。楽しんだか、積んだだけか。そこは自分に聞いとけ😏',
+    '娯楽組が元気だな。「見るだけ」のつもりだった分があるなら、そこだけ挙手。',
+    '趣味には予算も席を用意しとけ。楽しみだけ先に満席にするなよ。',
+    '財布まで趣味に参加してるな。会費、聞いてたか？',
+    '趣味費が生き生きしてる。人生には必要だが、数字まで推し活させるな。',
+    '楽しんだなら価値はある。買って満足、未開封なら俺がちょっと見る。',
+    '娯楽費、いい顔してるな。お前がもっといい顔したならまあ許す。'
+  ]);
+  const beauty=byWord(/衣服|美容|化粧|コスメ|服|美容院/);
+  if(beauty.length>=2)add('beauty',`衣服・美容などの記録が${beauty.length}件。`,[
+    '見た目に使う金は満足度が見えにくい。鏡がニヤついたなら一応証拠採用だ。',
+    '衣服・美容が何度か出てるな。クローゼットの空席も確認してから追加公演しろ。',
+    '美容代、効果の判定者が本人なの強いよな。採点甘くしてないか😏',
+    '服は一着ずつ来るのに、収納は団体で反対してくる。',
+    'コスメ類、少量なのに値札は小声じゃないんだよな。',
+    '身だしなみは必要。似た色を三本買うのは審議だ。'
+  ]);
+  const utilities=byWord(/光熱|電気|水道|ガス/);
+  if(utilities.length)add('utilities','水道・光熱費などの分類に支出あり。',[
+    '光熱費は生活の背景役なのに、請求だけ前へ出てくるな。',
+    '電気も水も使えば来る。ここは説教より季節と使用量を見る欄だな。',
+    '光熱費、逃げ場の少ない支出代表だ。だからこそ月ごとの波だけ見とけ。',
+    '必要経費の顔が強い。こいつ相手に根性論は通じん。',
+    '請求書だけ季節感が豊かだな。',
+    '水道光熱費は削りすぎると生活が急に修行になる。ほどほどでいい。'
+  ]);
+  const transport=byWord(/交通|電車|バス|タクシー|ガソリン/);
+  if(transport.length>=2)add('transport',`交通関連の記録が${transport.length}件。`,[
+    '移動した分だけ財布も動いてるな。お前だけワープできれば安いんだが。',
+    '交通費は目的地まで付いてくる影みたいなもんだ。回数だけ眺めとけ。',
+    'タクシーが多いなら時間を買ったのか、足が降参したのか。その違いはある。',
+    '移動費、地味に積むタイプだな。足跡が全部有料。',
+    '交通費は使い道がはっきりしてる分、言い訳もはっきりしてる。',
+    'どこ行ったかは知らんが、財布も同行してたのは確かだ。'
+  ]);
+  const communication=byWord(/通信|スマホ|携帯|インターネット|サブスク/);
+  if(communication.length)add('communication','通信・サブスクなどを示す分類に支出あり。',[
+    '通信費は毎月しれっと座るのがうまい。常連すぎて背景になるな。',
+    'サブスク系は一件ずつ静かだが、解約し忘れだけ妙に長生きする。',
+    '固定費って顔で油断させてくるな。一年分にすると急に声が太い。',
+    '通信は必要。使ってない契約まで通信してくる必要はない。',
+    '毎月同じ請求ほど見なくなる。向こうもそれを知ってそうで腹立つな。',
+    'サブスクは入る時ワンタップ、やめる時だけ迷路なの何なんだろうな。'
+  ]);
+  if(Object.keys(a.cats).length>=6)add('variety',`支出カテゴリが${Object.keys(a.cats).length}種類。`,[
+    '今月はずいぶん多方面に金が働いたな。人員配置が豪華だ。',
+    'カテゴリが多い。財布が総合商社みたいになってるぞ。',
+    'あっちにもこっちにも支出。守備範囲だけは広いな。',
+    'いろんな項目が出てる月だな。こういう時こそ合計より上位だけ見ろ。',
+    '支出の顔ぶれが豊富だ。家計簿に多様性まで求めてないぞ。',
+    '今月はオールスター感あるな。出演料は全部お前持ちだけど。'
+  ]);
+  if(a.spends.length===1)add('one','選んだ月の支出記録は１件。',[
+    'まだ一件だな。これだけで生活全部を見抜いた顔はしねぇよ。',
+    '一件目からオジサン呼んだのか。記録が増えれば、ツッコミの相手も増えるぞ。',
+    '今月は今のところ一件。家計簿の開会式にしては、ずいぶん早く講評を求めるな😏',
+    '一件、受け取った。続きがあるなら置いてけ。結論を急ぐほど材料は揃ってねぇ。',
+    '一件だけで俺を働かせる気か。時給換算したら高いぞ。',
+    '今は一件。これで傾向まで語ったら、ただの知ったかオジサンだ。'
+  ]);
+  return options;
+}
 function prepareComments(a){const pool=commentCandidates(a),context=JSON.stringify([mode,a.key,a.rows,a.previous?.rows]);if(context!==commentContext){commentContext=context;commentBag=[];}pickComment(pool);}
 function pickComment(pool){if(!activeRows.length&&mode==='csv')return;const eligible=pool||commentCandidates(monthAnalysis(activeRows,selectedMonth));if(!commentBag.length){commentBag=[...eligible];for(let i=commentBag.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[commentBag[i],commentBag[j]]=[commentBag[j],commentBag[i]];}if(commentBag.length>1&&commentBag.at(-1).text===lastComment)[commentBag[0],commentBag[commentBag.length-1]]=[commentBag.at(-1),commentBag[0]];}const item=commentBag.pop();if(!item)return;lastComment=item.text;$('comment').textContent=item.text;$('commentReason').textContent='見ている数字：'+item.reason;$('moreComment').disabled=eligible.length<2;}
 
